@@ -2,6 +2,7 @@ require('babel-register')({
   presets: ['es2015']
 });
 
+var _ = require('lodash');
 var gulp = require('gulp');
 var path = require('path');
 var gutil = require('gulp-util');
@@ -10,19 +11,24 @@ var Rsync = require('rsync');
 var Promise = require('bluebird');
 var eslint = require('gulp-eslint');
 var rimraf = require('rimraf');
-var tar = require('gulp-tar');
-var gzip = require('gulp-gzip');
+var fs = require('fs');
+var glob = require('glob');
+
+var zip = require('gulp-zip');
+var aws = require('aws-sdk');
 
 var pkg = require('./package.json');
-var packageName = pkg.name  + '-' + pkg.version;
 
 // relative location of Kibana install
 var pathToKibana = '../kibana';
 
-var buildDir = path.resolve(__dirname, 'build');
+var buildDir = path.resolve(__dirname, 'build/kibana');
+var packageRoot = path.resolve(__dirname, 'build');
+
 var targetDir = path.resolve(__dirname, 'target');
 var buildTarget = path.resolve(buildDir, pkg.name);
 var kibanaPluginDir = path.resolve(__dirname, pathToKibana, 'plugins', pkg.name);
+
 
 var include = [
   'package.json',
@@ -108,11 +114,52 @@ gulp.task('build', ['clean'], function (done) {
   syncPluginTo(buildTarget, done);
 });
 
-gulp.task('package', ['build'], function () {
-  return gulp.src(path.join(buildDir, '**', '*'))
-    .pipe(tar(packageName + '.tar'))
-    .pipe(gzip())
-    .pipe(gulp.dest(targetDir));
+gulp.task('package', ['build'], function (done) {
+  function writePackages(versions, done) {
+    if (!versions.length) { done(); return; }
+
+    // Write a new version so it works with the Kibana package manager
+    var editable = _.cloneDeep(pkg);
+    editable.version = versions.shift();
+    require('fs').writeFileSync(buildTarget + '/' + 'package.json', JSON.stringify(editable, null, '  '));
+
+    var archiveName = editable.name  + '-' + editable.version + '.zip';
+
+    gulp.src(path.join(packageRoot, '**', '*'))
+      .pipe(zip(archiveName))
+      .pipe(gulp.dest(targetDir))
+      .on('end', function () {
+        gutil.log('Packaged', archiveName);
+        writePackages(versions, done);
+      });
+  }
+
+  // Write one archive for every supported kibana version, plus one with the actual timelion version
+
+  writePackages(pkg.kibanas.concat([pkg.version]), done);
+});
+
+gulp.task('release', ['package'], function (done) {
+  function upload(files, done) {
+    if (!files.length) { done(); return; }
+
+    var filename = _.last(files.shift().split('/'));
+    var s3 = new aws.S3();
+    var params = {
+      Bucket: 'download.elasticsearch.org',
+      Key: 'kibana/timelion-random/' + filename,
+      Body: fs.createReadStream(path.join(targetDir, filename))
+    };
+    s3.upload(params, function (err, data) {
+      if (err) return done(err);
+      gutil.log('Finished', gutil.colors.cyan('uploaded') + ' Available at ' + data.Location);
+      upload(files, done);
+    });
+  }
+
+  glob(targetDir + '/*.zip', function (err, files) {
+    upload(files, done);
+  });
 });
 
 gulp.task('dev', ['sync'], function () {
