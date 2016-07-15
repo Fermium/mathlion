@@ -6,7 +6,6 @@ module.exports = function (kibana) {
       // Initialize your function plugins here.
       server.plugins.timelion.addFunction(require('./functions/random'));
       server.plugins.timelion.addFunction(require('./functions/shuffle'));
-
     }
   });
 };
