@@ -8,6 +8,15 @@ This is an example plugin for timelion that implements both a `datasource` and a
 ### .shuffle()
 `.shuffle()` is a `chainable` function that can be run to shuffle the points in a series, producing a series in which the points are the same as before, but appear in a random order
 
+## Installing
+As this is an example, I don't publish package for it, but installing directly from Github is fairly simple:
+
+1. cd to your `kibana/plugins` or `kibana/installedPlugins` directory. Only one of those will exist depending on your Kibana version. 
+2. `wget https://github.com/rashidkpc/timelion-random/archive/master.zip`
+3. `unzip master.zip`
+4. `rm kibana-random-master/gulpfile.js` (This is a dev environment thing. Kibana won't start if you don't remove `gulpfile.js`)
+4. Start kibana (and delete that master.zip if you want, or not, it won't break anything)
+
 ## Creating Timelion plugins
 If you've ever created a Kibana plugin before, this is going to be old hat. Otherwise:
 
