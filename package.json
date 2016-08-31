@@ -1,12 +1,12 @@
 {
-  "name": "timelion-random",
+  "name": "mathlion",
   "version": "0.1.0",
   "kibanas": [
     "5.0.0-alpha2",
     "5.0.0-alpha3",
     "5.0.0-alpha4"
   ],
-  "description": "Weeeeee",
+  "description": "Timelion is learning some math",
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp dev",
