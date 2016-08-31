@@ -23,8 +23,8 @@ Upcoming features:
 * Treat with units conversion `.es(query).math("this to Kw")`
 * Save variables `.es(current).math(i=this).hide(), .es(voltage).assign(v=this).hide()`
 * Retrieve and elaborate on variables `.math(power=(v*i))` or `.math(v*i).label(power)`
-* Very fast vector math
+* Fast vector math
 * Thernary conditions, various test operators
 * String to number
 * Scientific costants, trigonometry etc etc.
-* Easily import other statistical and math functions in a very similar way to the one Timelion uses, but instead allowing them to be used inside math equations
+* Easily import other statistical and math functions in a similar way to the one Timelion uses, but instead allowing them to be used inside math equations
