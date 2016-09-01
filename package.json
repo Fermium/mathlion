@@ -34,6 +34,7 @@
     "rsync": "^0.4.0"
   },
   "dependencies": {
-    "babel-register": "^6.3.13"
+    "babel-register": "^6.3.13",
+    "jsonfile": "^2.3.1"
   }
 }
