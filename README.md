@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/fermiumlabs/mathlion/badges/gpa.svg)](https://codeclimate.com/github/fermiumlabs/mathlion) [![Test Coverage](https://codeclimate.com/github/fermiumlabs/mathlion/badges/coverage.svg)](https://codeclimate.com/github/fermiumlabs/mathlion/coverage)
 # Mathlion
 
 Mathlion enables equation parsing and advanced math in Timelion for kibana
@@ -28,3 +29,6 @@ Upcoming features:
 * String to number
 * Scientific costants, trigonometry etc etc.
 * Easily import other statistical and math functions in a similar way to the one Timelion uses, but instead allowing them to be used inside math equations
+
+
+## 
