@@ -1,9 +1,10 @@
 var alter = require('../../timelion/server/lib/alter.js');
 var Datasource = require('../../timelion/server/lib/classes/datasource');
+var Chainable = require('../../timelion/server/lib/classes/chainable');
 var _ = require('lodash');
 var math = require('mathjs');
-var jsonfile = require('jsonfile');
-module.exports = new Datasource('math', {
+var mathenviroment = require('./math-enviroment');
+module.exports = new Datasource('maths', {
   args: [
     {
       name: 'function',
@@ -15,19 +16,20 @@ module.exports = new Datasource('math', {
     }
   ],
   help: 'math stuff and whatever',
-  fn: function randomFn(args, tlConfig) {
-    var file = './scope.json';
-    var scope = jsonfile.readFile(file, function (err) { console.re.log(err); });
+  fn: function mathFunction(args, tlConfig) {
+    console.re.log('starting math');
     var target = tlConfig.getTargetSeries();
-    var equation = args.byName.function;
-    function solve(eq) {
-      var vectoreq = eq.replace('*','.*').replace('/','./').replace('^','.^');
+    var inputequation = args.byName.function;
+    function solve(equation) {
+      var vectoreq = equation.replace('*','.*').replace('/','./').replace('^','.^');
+      console.re.log(vectoreq);
       var code = math.compile(vectoreq);
-      return code.eval(scope);
+      return code.eval(mathenviroment.scope);
     }
-    var values = solve(equation);
+    var values = solve(inputequation);
     var times = _.map(target, 0);
     var data = _.zip(times, values);
+    console.re.log('math done');
     return Promise.resolve({
       type: 'seriesList',
       list: [

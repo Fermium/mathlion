@@ -19,6 +19,7 @@ module.exports = new Datasource('random', {
   ],
   help: 'Generate a random series with the specified limits',
   fn: function randomFn(args, tlConfig) {
+    console.re.log('starting random');
     var target = tlConfig.getTargetSeries();
     var min = args.byName.min == null ? 0 : args.byName.min;
     var max = args.byName.min == null ? 1 : args.byName.max;
@@ -30,7 +31,7 @@ module.exports = new Datasource('random', {
     var data = _.map(target, function (bucket) {
       return [bucket[0], random(min, max)];
     });
-
+    console.re.log('random done');
     return Promise.resolve({
       type: 'seriesList',
       list: [
