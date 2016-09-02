@@ -7,7 +7,7 @@ var fs = require('fs');
 
 var mathenviroment = require('./math-enviroment');
 
-module.exports = new Chainable('assign', {
+module.exports = new Chainable('math-assign', {
   args: [
     {
       name: 'inputSeries',
@@ -22,18 +22,19 @@ module.exports = new Chainable('assign', {
   fn: function assign(args) {
 
     var varname = args.byName.name;
-    console.re.log('starting assign ' + varname);
-    function assign(name,arr) {
+
+    function assign(name,values,times) {
       var y = new Object();
-      y[name] = arr;
+      y[name] = values;
       _.extend(mathenviroment.scope,y);
-      console.re.log(mathenviroment.scope);
+      mathenviroment.scopetime=times;
       return;
     }
     return alter(args, function (eachSeries) {
+      var times = _.map(eachSeries.data, 0);
       var values = _.map(eachSeries.data, 1);
-      assign(varname,values);
-      console.re.log('assign done ' + varname);
+      assign(varname,values,times);
+      console.re.log(eachSeries);
       return eachSeries;
     });
   }
