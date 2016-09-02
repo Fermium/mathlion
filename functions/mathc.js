@@ -30,7 +30,6 @@ module.exports = new Chainable('math', {
     function solve(equation,scope,length) {
       var vectoreq = equation.split('*').join('.*').split('/').join('./').split('^').join('.^');
       vectoreq = vectoreq.split('..*').join('.*').split('../').join('./').split('..^').join('.^');
-      vectoreq = vectoreq.split('').join()
       console.re.log(vectoreq);
       var code = math.compile(vectoreq);
       return code.eval(scope);
@@ -44,7 +43,8 @@ module.exports = new Chainable('math', {
       _.extend(scope,mathenviroment.scope);
       var values = solve(inputequation,scope,times.length);
       eachSeries.data = _.zip(times, values);
-      eachSeries.label = label;
+      var eq= inputequation.split("this").join(eachSeries.label);
+      eachSeries.label = label!=null?label:math.parse(eq).toString();
       console.re.log('mathChain done');
       console.re.log(eachSeries);
       return eachSeries;
