@@ -6,7 +6,7 @@ Mathlion enables equation parsing and advanced math in Timelion for kibana
 ## Installing
 Until Mathlion is release, to install it you have to:
 
-1. cd to your `kibana/plugins` or `kibana/installedPlugins` directory. Only one of those will exist depending on your Kibana version. 
+1. cd to your `kibana/plugins` or `kibana/installedPlugins` directory. Only one of those will exist depending on your Kibana version.
 2. `wget https://github.com/fermiumlabs/mathlion/archive/master.zip`
 3. `unzip master.zip`
 4. `rm kibana-random-master/gulpfile.js` (This is a dev environment thing. Kibana won't start if you don't remove `gulpfile.js`)
@@ -30,5 +30,8 @@ Upcoming features:
 * Scientific costants, trigonometry etc etc.
 * Easily import other statistical and math functions in a similar way to the one Timelion uses, but instead allowing them to be used inside math equations
 
+## THINGS TO DO
 
-## 
+
+* Solve issues with scalar to vector math (solution is to replace number with number*ones(...) but need a smart way to do that)
+* Find a way to instance separate scope for every plot
