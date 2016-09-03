@@ -17,7 +17,7 @@ module.exports = new Datasource('random', {
       types: ['string', 'null']
     }
   ],
-  help: 'Generate a random series with the specified limits',
+  help: 'Generate a random series with the specified limits. Useless outside of testing',
   fn: function randomFn(args, tlConfig) {
     console.re.log('starting random');
     var target = tlConfig.getTargetSeries();

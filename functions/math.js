@@ -12,7 +12,7 @@ module.exports = new Chainable('math', {
     {
       name: 'function',
       types: ['string'],
-      help: 'The function you want to evaluate'
+      help: 'A mathematical expression to evaluate. You can use variables from math-assign() and local ones.'
     },
     {
       name: 'label',

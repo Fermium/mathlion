@@ -18,7 +18,7 @@ module.exports = new Chainable('math-assign', {
       types: ['string']
     }
   ],
-  help: 'assign the selected serie to a variable',
+  help: 'Assign this series to a variable.',
   fn: function assign(args) {
 
     var varname = args.byName.name;
