@@ -17,7 +17,7 @@ It's a function.
 
 Examples:
 
-```sh
+```js
 .es(*).math-assign("a") 
 .es(*).math-assign("myvariable")
 ```
@@ -30,9 +30,9 @@ Function | Description                                                          
 
 Examples:
 
-```sh
-.nop() #returns nothing at all
-.nop().add(1).label(useless axis) #write an y axis called "useless axis" with y=1
+```js
+.nop() //returns nothing at all
+.nop().add(1).label(useless axis) //#write an y axis called "useless axis" with y=1
 ```
 
 ### .math()
@@ -43,26 +43,26 @@ Function | Description                                  | type
 
 Examples:
 
-```sh
+```js
 .es(*).math-assign("a")
-.nop().math("a")  #this row now equals the former one
-.es(*).math("this") #return the .es(*) query
-.es(*).math("this+5") # add 5 to the .es(*) query
-.nop.math("sqrt(3^2 + 4^2)") #returns 5
-.es(@metal_pipe_lenght_inches).math("this inch to m") #converts your query from inches to meters
-.es(@metal_pipe_lenght_inches).math("to(this inch, m)") #converts your query from inches to meters, but using a function instead of an operator
+.nop().math("a")  //this row now equals the former one
+.es(*).math("this") //return the .es(*) query
+.es(*).math("this+5") // add 5 to the .es(*) query
+.nop.math("sqrt(3^2 + 4^2)") //returns 5
+.es(@metal_pipe_lenght_inches).math("this inch to m") //converts your query from inches to meters
+.es(@metal_pipe_lenght_inches).math("to(this inch, m)") //converts your query from inches to meters, but using a function instead of an operator
 ```
 
 As you may have understood, `this` inside the mathematical expression returns the value of the precedent function. It acts as a local variable, and never exit the boundaries of the function you write it in.
 
 You can do farly complex stuff inside a math function:
 
-```sh
-number(this) #will convert this from a string/boolean to a number
-mode(a) #compute the mode of the whole set of data in "a" in your window and display it as an y axis
-(a>0) ? (a=1) : (a=-1) #if is positive a=1, else a=-1\. A will be modified only temporarely for this equation
-a=1 ; a=2; a=a+1 # a is now 3, the sub-expressions are evaluated sequentially. The last is the one really considere in the end 
-a=1 ; a=2; a+1 # exactly same as before, but returns directly 3 instead of a=3
+```js
+number(this) //will convert this from a string/boolean to a number
+mode(a) //compute the mode of the whole set of data in "a" in your window and display it as an y axis
+(a>0) ? (a=1) : (a=-1) //if is positive a=1, else a=-1\. A will be modified only temporarely for this equation
+a=1 ; a=2; a=a+1 // a is now 3, the sub-expressions are evaluated sequentially. The last is the one really considere in the end 
+a=1 ; a=2; a+1 // exactly same as before, but returns directly 3 instead of a=3
 ```
 
 ## Supported Kibana versions
