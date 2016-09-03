@@ -7,7 +7,6 @@ module.exports = function (kibana) {
       server.plugins.timelion.addFunction(require('./functions/random'));
       server.plugins.timelion.addFunction(require('./functions/nop'));
       server.plugins.timelion.addFunction(require('./functions/math'));
-      server.plugins.timelion.addFunction(require('./functions/shuffle'));
       server.plugins.timelion.addFunction(require('./functions/assign'));
     }
   });
