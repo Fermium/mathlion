@@ -18,20 +18,21 @@ This plugin is supported by Kibana 5 alpha, and will be backported to Kibana 4.
 
 ## Features
 
-Upcoming features:
+#### Working features:
 
-* Full math functions with syntax such as `.es(query).math("this*2")`
-* Treat with units conversion `.es(query).math("this to Kw")`
-* Save variables `.es(current).math(i=this).hide(), .es(voltage).assign(v=this).hide()`
-* Retrieve and elaborate on variables `.math(power=(v*i))` or `.math(v*i).label(power)`
+* Full math functions with syntax such as `.es(query).math("this*2")` or `.es(query).math(this*2)`
+* Save variables `.es(current).math-assing(i).hide(), .es(voltage).math-assign("v").hide()` both with or without quotes 
+* Retrieve and elaborate on variables `.nop().math(v*i,label="power")` or `.es(current).math(v*this)`
+* Scientific costants, trigonometry etc etc.
 * Fast vector math
+
+#### Upcoming features:
+
+* Treat with units conversion `.es(query).math("this to Kw")`
 * Thernary conditions, various test operators
 * String to number
-* Scientific costants, trigonometry etc etc.
 * Easily import other statistical and math functions in a similar way to the one Timelion uses, but instead allowing them to be used inside math equations
 
 ## THINGS TO DO
 
-
-* Solve issues with scalar to vector math (solution is to replace number with number*ones(...) but need a smart way to do that)
 * Find a way to instance separate scope for every plot
