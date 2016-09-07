@@ -29,6 +29,7 @@ module.exports = new Chainable('math', {
     function solve(equation,scope,length) {
       var vectoreq = equation.split('*').join('.*').split('/').join('./').split('^').join('.^');
       vectoreq = vectoreq.split('..*').join('.*').split('../').join('./').split('..^').join('.^');
+      vectoreq = vectoreq.replace(/(\.?\d+)/g,'($1)');
       console.re.log(vectoreq);
       var code = math.compile(vectoreq);
       return code.eval(scope);
@@ -45,7 +46,7 @@ module.exports = new Chainable('math', {
       var eq = inputequation.split('this').join(eachSeries.label);// eslint-disable-line no-use-before-define
       eachSeries.label = label !== null ? label : math.parse(eq).toString();
       console.re.log('mathChain done');
-      console.re.log(eachSeries);
+      //console.re.log(eachSeries);
       return eachSeries;
     });
   }

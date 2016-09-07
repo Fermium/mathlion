@@ -3,8 +3,6 @@ var Chainable = require('../../timelion/server/lib/classes/chainable');
 var _ = require('lodash');
 var math = require('mathjs');
 var consolere = require('console-remote-client').connect('console.re','80','mathlion');
-var fs = require('fs');
-
 var mathenviroment = require('./math-enviroment');
 
 module.exports = new Chainable('math-assign', {
@@ -34,7 +32,7 @@ module.exports = new Chainable('math-assign', {
       var times = _.map(eachSeries.data, 0);
       var values = _.map(eachSeries.data, 1);
       assign(varname,values,times);
-      console.re.log(eachSeries);
+      console.re.log();
       return eachSeries;
     });
   }
