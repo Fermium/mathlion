@@ -53,7 +53,10 @@ function syncPluginTo(dest, done) {
             .flags('uav')
             .recursive(true)
             .set('delete')
-            .exclude(exclude);
+            .exclude(exclude)
+            .output(function(data) {
+              process.stdout.write(data.toString('utf8'));
+            });
           rsync.execute(function(err) {
             if (err) {
               console.log(err);
