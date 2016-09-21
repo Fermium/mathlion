@@ -1,5 +1,5 @@
 require('babel-register')({
-    presets: ['es2015']
+  presets: ['es2015']
 });
 
 var _ = require('lodash');
@@ -31,118 +31,118 @@ var kibanaPluginDir = path.resolve(__dirname, pathToKibana, 'plugins', pkg.name)
 
 
 var include = [
-    'package.json',
-    'index.js',
-    'node_modules',
-    'functions'
+  'package.json',
+  'index.js',
+  'node_modules',
+  'functions'
 ];
 var exclude = Object.keys(pkg.devDependencies).map(function(name) {
-    return path.join('node_modules', name);
+  return path.join('node_modules', name);
 });
 
 function syncPluginTo(dest, done) {
-    mkdirp(dest, function(err) {
-        if (err) return done(err);
-        Promise.all(include.map(function(name) {
-                var source = path.resolve(__dirname, name);
-                return new Promise(function(resolve, reject) {
-                    var rsync = new Rsync();
-                    rsync
-                        .source(source)
-                        .destination(dest)
-                        .flags('uav')
-                        .recursive(true)
-                        .set('delete')
-                        .exclude(exclude)
-                        .output(function(data) {
-                            process.stdout.write(data.toString('utf8'));
-                        });
-                    rsync.execute(function(err) {
-                        if (err) {
-                            console.log(err);
-                            return reject(err);
-                        }
-                        resolve();
-                    });
-                });
-            }))
-            .then(function() {
-                done();
-            })
-            .catch(done);
-    });
+  mkdirp(dest, function(err) {
+    if (err) return done(err);
+    Promise.all(include.map(function(name) {
+        var source = path.resolve(__dirname, name);
+        return new Promise(function(resolve, reject) {
+          var rsync = new Rsync();
+          rsync
+            .source(source)
+            .destination(dest)
+            .flags('uav')
+            .recursive(true)
+            .set('delete')
+            .exclude(exclude)
+            .output(function(data) {
+              process.stdout.write(data.toString('utf8'));
+            });
+          rsync.execute(function(err) {
+            if (err) {
+              console.log(err);
+              return reject(err);
+            }
+            resolve();
+          });
+        });
+      }))
+      .then(function() {
+        done();
+      })
+      .catch(done);
+  });
 }
 
 gulp.task('sync', function(done) {
-    syncPluginTo(kibanaPluginDir, done);
+  syncPluginTo(kibanaPluginDir, done);
 });
 
 gulp.task('lint', function() {
-    var filePaths = [
-        'gulpfile.js',
-        'functions/**/*.js'
-    ];
+  var filePaths = [
+    'gulpfile.js',
+    'functions/**/*.js'
+  ];
 
-    return gulp.src(filePaths)
-        // eslint() attaches the lint output to the eslint property
-        // of the file object so it can be used by other modules.
-        .pipe(eslint())
-        // eslint.format() outputs the lint results to the console.
-        // Alternatively use eslint.formatEach() (see Docs).
-        .pipe(eslint.formatEach())
-        // To have the process exit with an error code (1) on
-        // lint error, return the stream and pipe to failOnError last.
-        .pipe(eslint.failOnError());
+  return gulp.src(filePaths)
+    // eslint() attaches the lint output to the eslint property
+    // of the file object so it can be used by other modules.
+    .pipe(eslint())
+    // eslint.format() outputs the lint results to the console.
+    // Alternatively use eslint.formatEach() (see Docs).
+    .pipe(eslint.formatEach())
+    // To have the process exit with an error code (1) on
+    // lint error, return the stream and pipe to failOnError last.
+    .pipe(eslint.failOnError());
 });
 
 gulp.task('test', ['lint'], function() {
-    gutil.log(gutil.colors.red('Nothing to test...'));
+  gutil.log(gutil.colors.red('Nothing to test...'));
 });
 
 gulp.task('clean', function(done) {
-    Promise.each([buildDir, targetDir], function(dir) {
-        return new Promise(function(resolve, reject) {
-            rimraf(dir, function(err) {
-                if (err) return reject(err);
-                resolve();
-            });
-        });
-    }).nodeify(done);
+  Promise.each([buildDir, targetDir], function(dir) {
+    return new Promise(function(resolve, reject) {
+      rimraf(dir, function(err) {
+        if (err) return reject(err);
+        resolve();
+      });
+    });
+  }).nodeify(done);
 });
 
 gulp.task('build', ['clean'], function(done) {
-    syncPluginTo(buildTarget, done);
+  syncPluginTo(buildTarget, done);
 });
 
 gulp.task('package', ['build'], function(done) {
-    function writePackages(versions, done) {
-        if (!versions.length) {
-            done();
-            return;
-        }
-
-        // Write a new version so it works with the Kibana package manager
-        var editable = _.cloneDeep(pkg);
-        editable.version = versions.shift();
-        require('fs').writeFileSync(buildTarget + '/' + 'package.json', JSON.stringify(editable, null, '  '));
-
-        var archiveName = editable.name + '-' + editable.version + '.zip';
-
-        gulp.src(path.join(packageRoot, '**', '*'))
-            .pipe(zip(archiveName))
-            .pipe(gulp.dest(targetDir))
-            .on('end', function() {
-                gutil.log('Packaged', archiveName);
-                writePackages(versions, done);
-            });
+  function writePackages(versions, done) {
+    if (!versions.length) {
+      done();
+      return;
     }
 
-    // Write one archive for every supported kibana version, plus one with the actual timelion version
+    // Write a new version so it works with the Kibana package manager
+    var editable = _.cloneDeep(pkg);
+    editable.version = versions.shift();
+    require('fs').writeFileSync(buildTarget + '/' + 'package.json', JSON.stringify(editable, null, '  '));
 
-    writePackages(pkg.kibanas.concat([pkg.version]), done);
+    var archiveName = editable.name + '-' + editable.version + '.zip';
+
+    gulp.src(path.join(packageRoot, '**', '*'))
+      .pipe(zip(archiveName))
+      .pipe(gulp.dest(targetDir))
+      .on('end', function() {
+        gutil.log('Packaged', archiveName);
+        writePackages(versions, done);
+      });
+  }
+
+  // Write one archive for every supported kibana version, plus one with the actual timelion version
+
+  writePackages(pkg.kibanas.concat([pkg.version]), done);
 });
 
 
 gulp.task('dev', ['sync'], function() {
-    gulp.watch(['package.json', 'index.js', 'functions/**/*'], ['sync', 'lint']);
+  gulp.watch(['package.json', 'index.js', 'functions/**/*'], ['sync', 'lint']);
 });
