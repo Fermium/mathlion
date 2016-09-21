@@ -22,7 +22,6 @@ deploy:
     repo: fermiumlabs/mathlion
     branch: 
       - master
-      - deploy-test
       
 notifications:
   email: false
