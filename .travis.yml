@@ -1,6 +1,5 @@
 language: node_js
 node_js:
-- node
 - 6
 
 before_script:
@@ -19,9 +18,7 @@ deploy:
   skip_cleanup: true
   on:
     repo: fermiumlabs/mathlion
-    node: '6'
-    branch: 
-      - master
+    tags: true
       
 notifications:
   email: false
