@@ -11,7 +11,7 @@ Mathlion is a Kibana extension that enables equation parsing and advanced math u
 
 Function         | Description                                           | type
 :--------------- | :---------------------------------------------------- | :--------
-`.math-assign()` | assign the value of the current series to a variable. | chainable
+`.math-assign()` | Assign the value of the current series to a variable. | chainable
 
 It's a function.
 
@@ -39,7 +39,7 @@ Examples:
 
 Function | Description                                  | type
 :------- | :------------------------------------------- | :--------
-`math()` | parse mathematical equations and expressions | chainable
+`math()` | Parse mathematical equations and expressions | chainable
 
 Examples:
 
