@@ -1,5 +1,4 @@
 var _ = require('lodash');
-var consolere = require('console-remote-client').connect('console.re','80','mathlion');
 
 var scope = new Object();
 module.exports.initSubEnviroment = function (envName) {
@@ -34,7 +33,6 @@ var interval = setInterval (function (scope) {
   var now = Date.now() / 1000;
   for (var key in scope) {
     if (typeof scope[key] !== 'function' && now - scope[key].last_request > 10) {
-      console.re.log(key + ' deleted');
       delete scope[key];
     }
   }

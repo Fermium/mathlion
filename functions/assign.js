@@ -32,8 +32,6 @@ module.exports = new Chainable('math-assign', {
       var times = _.map(eachSeries.data, 0);
       var values = _.map(eachSeries.data, 1);
       assign(varname,values,times);
-      console.re.log(tlConfig.server._sources[0]._requestCounter.value);
-      console.re.log('envName=' + envName);
       return eachSeries;
     });
   }
