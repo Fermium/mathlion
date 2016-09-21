@@ -54,9 +54,9 @@ function syncPluginTo(dest, done) {
                         .recursive(true)
                         .set('delete')
                         .exclude(exclude)
-                        .output(function(data) {
+                        /*.output(function(data) {
                             process.stdout.write(data.toString('utf8'));
-                        });
+                        })*/;
                     rsync.execute(function(err) {
                         if (err) {
                             console.log(err);
