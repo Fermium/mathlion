@@ -1,5 +1,5 @@
-var alter = require('../../timelion/server/lib/alter.js');
-var Chainable = require('../../timelion/server/lib/classes/chainable');
+var alter = require('../../../src/core_plugins/timelion/server/lib/alter.js');
+var Chainable = require('../../../src/core_plugins/timelion/server/lib/classes/chainable');
 var _ = require('lodash');
 
 module.exports = new Chainable('shuffle', {
