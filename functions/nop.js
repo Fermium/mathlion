@@ -5,7 +5,7 @@ var math = require('mathjs');
 var mathenviroment = require('./math-enviroment');
 module.exports = new Datasource('nop', {
   args: [  ],
-  help: 'NOP - No operations. Return a lot of zeroes',
+  help: 'nope',
   fn: function nop(args, tlConfig) {
     return Promise.resolve({
       type: 'seriesList',
