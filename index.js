@@ -1,6 +1,6 @@
 module.exports = function (kibana) {
   return new kibana.Plugin({
-    name: 'timelion-random',
+    name: 'mathlion',
     require: ['timelion'],
     init: function (server) {
       // Initialize your function plugins here.

@@ -142,31 +142,6 @@ gulp.task('package', ['build'], function(done) {
     writePackages(pkg.kibanas.concat([pkg.version]), done);
 });
 
-gulp.task('release', ['package'], function(done) {
-    function upload(files, done) {
-        if (!files.length) {
-            done();
-            return;
-        }
-
-        var filename = _.last(files.shift().split('/'));
-        var s3 = new aws.S3();
-        var params = {
-            Bucket: 'download.elasticsearch.org',
-            Key: 'kibana/timelion-random/' + filename,
-            Body: fs.createReadStream(path.join(targetDir, filename))
-        };
-        s3.upload(params, function(err, data) {
-            if (err) return done(err);
-            gutil.log('Finished', gutil.colors.cyan('uploaded') + ' Available at ' + data.Location);
-            upload(files, done);
-        });
-    }
-
-    glob(targetDir + '/*.zip', function(err, files) {
-        upload(files, done);
-    });
-});
 
 gulp.task('dev', ['sync'], function() {
     gulp.watch(['package.json', 'index.js', 'functions/**/*'], ['sync', 'lint']);
