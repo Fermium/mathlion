@@ -9,9 +9,9 @@ Mathlion is a Kibana extension that enables equation parsing and advanced math u
 
 ### .math-assign()
 
-Function         | Description                                           | type
+Function         | Description                                           | Type
 :--------------- | :---------------------------------------------------- | :--------
-`.math-assign()` | Assign the value of the current series to a variable. | chainable
+`.math-assign()` | Assign the value of the current series to a variable. | Chainable
 
 It's a function.
 
@@ -24,9 +24,9 @@ Examples:
 
 ### .nop()
 
-Function | Description                                                                                      | type
+Function | Description                                                                                      | Type
 :------- | :----------------------------------------------------------------------------------------------- | :---------
-`.nop()` | A fake datasource that returns no value at all. It's similar to `.value(0)` but more clean | datasource
+`.nop()` | A fake datasource that returns no value at all. It's similar to `.value(0)` but more clean | Datasource
 
 Examples:
 
@@ -37,9 +37,9 @@ Examples:
 
 ### .math()
 
-Function | Description                                  | type
+Function | Description                                  | Type
 :------- | :------------------------------------------- | :--------
-`math()` | Parse mathematical equations and expressions | chainable
+`math()` | Parse mathematical equations and expressions | Chainable
 
 Examples:
 
