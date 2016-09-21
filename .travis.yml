@@ -6,8 +6,9 @@ node_js:
 before_script:
 - npm install -g gulp
 script:
-- npm build
-- npm package
+- gulp build
+- gulp test
+- gulp package
 deploy:
   provider: releases
   api_key:
