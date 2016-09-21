@@ -3,7 +3,7 @@
 
 # Mathlion
 
-Mathlion enables equation parsing and advanced math in Timelion for kibana
+Mathlion is a Kibana extension that enables equation parsing and advanced math under Timelion.
 
 ## Usage
 
@@ -26,13 +26,13 @@ Examples:
 
 Function | Description                                                                                      | type
 :------- | :----------------------------------------------------------------------------------------------- | :---------
-`.nop()` | return only zeroes withouth messing with the axis label. It's similar to `.value(0)` but cleaner | datasource
+`.nop()` | A fake datasource that returns no value at all. It's similar to `.value(0)` but more clean | datasource
 
 Examples:
 
 ```js
 .nop() //returns nothing at all
-.nop().add(1).label(useless axis) //#write an y axis called "useless axis" with y=1
+.nop().math(variable) //retrieve variable
 ```
 
 ### .math()
@@ -49,8 +49,6 @@ Examples:
 .es(*).math("this") //return the .es(*) query
 .es(*).math("this+5") // add 5 to the .es(*) query
 .nop.math("sqrt(3^2 + 4^2)") //returns 5
-.es(@metal_pipe_lenght_inches).math("this inch to m") //converts your query from inches to meters
-.es(@metal_pipe_lenght_inches).math("to(this inch, m)") //converts your query from inches to meters, but using a function instead of an operator
 ```
 
 As you may have understood, `this` inside the mathematical expression returns the value of the precedent function. It acts as a local variable, and never exit the boundaries of the function you write it in.
@@ -58,16 +56,15 @@ As you may have understood, `this` inside the mathematical expression returns th
 You can do farly complex stuff inside a math function:
 
 ```js
-number(this) //will convert this from a string/boolean to a number
 mode(a) //compute the mode of the whole set of data in "a" in your window and display it as an y axis
 (a>0) ? (a=1) : (a=-1) //if is positive a=1, else a=-1\. A will be modified only temporarely for this equation
-a=1 ; a=2; a=a+1 // a is now 3, the sub-expressions are evaluated sequentially. The last is the one really considere in the end 
+a=1 ; a=2; a=a+1 // a is now 3, the sub-expressions are evaluated sequentially. The last is the one considered in the end 
 a=1 ; a=2; a+1 // exactly same as before, but returns directly 3 instead of a=3
 ```
 
 ## Supported Kibana versions
 
-This plugin is supported by Kibana 5 alpha, and will be backported to Kibana 4.
+This plugin is supported by Kibana 5 alpha
 
 ## Features
 
@@ -75,6 +72,7 @@ This plugin is supported by Kibana 5 alpha, and will be backported to Kibana 4.
 
 * Full math functions with syntax such as `.es(query).math("this*2")` or `.es(query).math(this*2)`
 * Save variables `.es(current).math-assing(i).hide(), .es(voltage).math-assign("v").hide()` both with or without quotes 
+* Thernary conditions, various test operators
 * Retrieve and elaborate on variables `.nop().math(v*i,label="power")` or `.es(current).math(v*this)`
 * Scientific costants, trigonometry etc etc.
 * Fast vector math
@@ -82,6 +80,5 @@ This plugin is supported by Kibana 5 alpha, and will be backported to Kibana 4.
 #### Upcoming features:
 
 * Treat with units conversion `.es(query).math("this to Kw")`
-* Thernary conditions, various test operators
 * String to number
 * Easily import other statistical and math functions in a similar way to the one Timelion uses, but instead allowing them to be used inside math equations
