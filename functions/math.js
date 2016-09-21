@@ -27,11 +27,9 @@ module.exports = new Chainable('math', {
     var target = tlConfig.getTargetSeries();
     var inputequation = args.byName.function;
     var label = args.byName.label;
-    console.re.log('starting math chain ');
     function solve(equation,scope,length) {
       var vectoreq = equation.split('*').join('.*').split('/').join('./').split('^').join('.^');
       vectoreq = vectoreq.split('..*').join('.*').split('../').join('./').split('..^').join('.^');
-      //console.re.log(vectoreq);
       var code = math.compile(vectoreq);
       return code.eval(scope);
     }
@@ -46,10 +44,6 @@ module.exports = new Chainable('math', {
       eachSeries.data = _.zip(times, values);
       var eq = inputequation.split('this').join(eachSeries.label);// eslint-disable-line no-use-before-define
       eachSeries.label = label !== null ? label : math.parse(eq).toString();
-      console.re.log(tlConfig.server._sources[0]._requestCounter.value);
-      console.re.log(mathenviroment);
-      console.re.log('envName=' + envName);
-      //console.re.log(eachSeries);
       return eachSeries;
     });
   }
