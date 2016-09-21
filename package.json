@@ -37,6 +37,8 @@
   },
   "dependencies": {
     "babel-register": "^6.3.13",
-    "jsonfile": "^2.3.1"
+    "jsonfile": "^2.3.1",
+    "lodash": "^3.10.1",
+    "mathjs": "^3.5.2"
   }
 }

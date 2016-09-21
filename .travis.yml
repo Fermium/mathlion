@@ -3,12 +3,15 @@ node_js:
 - node
 - 6
 - 5
+
 before_script:
 - npm install -g gulp
+
 script:
 - gulp build
 - gulp test
 - gulp package
+
 deploy:
   provider: releases
   api_key:
