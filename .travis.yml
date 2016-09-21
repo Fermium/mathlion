@@ -13,6 +13,7 @@ script:
 
 deploy:
   provider: releases
+  file_glob: true
   api_key:
     secure: pJitDpcL+ApeS39FK96Jm4o+5grv/XmfnPO0EK753WvF+biMjvDLE2/7vKF0jUzHNZrNVGmLSXLxv0JqIliDyhS7H1SLiOrlQb/JpROJy44W8InDVW00YcpUXqezMrX4J2w5LdhlMZ6X5C8uo6VEI4DmexT6apQ1atWXa3Ew/ZaAzVNvnXq3S1NasAJxBZsZ+vOaJM/eubgpQ61z2iww/S9Q4U32RSG6/fX1xZ/rj2Mc0VWzdT3jBr4v8ROooG42n33T8zqTfuw/Ml5yqjy+a7niCZ+mJESWWnZHC773xlyo2aEOBnsMrdxrCgO+xqZo5BC3wWssMmXFaMIkgC380IOapM0/r7rG+tLhBilGsx0nxeE8AR2PoZXGPAxEb2obqr8s1e8Cex6JGGY8WWp9aytRUgxXsWRyV6dtEef9mRVhMxXC83cfBE4WyVbL054E2ePlhTFD6UwzHR+86YK/jT+05UoQlGDmEFPB4uCxZBhHTta+hJ+fvcxTfqDltL+PqZ65Z3DQP38PTiDjVeuthIJ15TtqO5AFOH5FR1vlEG4zsMfc/Vc4voHzz/BqxK7RFM27xM8OfYqwMAzNh58KriJS5ALwgP7ejM2M4RkmrwOcC8wcCI16vJk5TC66vVU79eWpAgL/oNJppOiHC3q/sSuJWmCUteDdGEJeMCP5AMg=
   file: target/mathlion-*.zip
