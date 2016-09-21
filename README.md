@@ -4,6 +4,7 @@
 # Mathlion
 
 Mathlion is a Kibana extension that enables equation parsing and advanced math under Timelion.
+Check out the [documentation](http://mathlion.readthedocs.io/)
 
 ## Usage
 
@@ -64,11 +65,9 @@ a=1 ; a=2; a+1 // exactly same as before, but returns directly 3 instead of a=3
 
 ## Supported Kibana versions
 
-This plugin is supported by Kibana 5 alpha
+This plugin is supported by Kibana 5 alpha.
 
-## Features
-
-#### Working features:
+## Features:
 
 * Full math functions with syntax such as `.es(query).math("this*2")` or `.es(query).math(this*2)`
 * Save variables `.es(current).math-assing(i).hide(), .es(voltage).math-assign("v").hide()` both with or without quotes 
@@ -77,8 +76,4 @@ This plugin is supported by Kibana 5 alpha
 * Scientific costants, trigonometry etc etc.
 * Fast vector math
 
-#### Upcoming features:
-
-* Treat with units conversion `.es(query).math("this to Kw")`
-* String to number
-* Easily import other statistical and math functions in a similar way to the one Timelion uses, but instead allowing them to be used inside math equations
+For upcoming features and todos check [here](https://github.com/fermiumlabs/mathlion/projects).
