@@ -2,9 +2,6 @@
   "name": "mathlion",
   "version": "5.0.0-beta1",
   "kibanas": [
-    "5.0.0-alpha2",
-    "5.0.0-alpha3",
-    "5.0.0-alpha4",
     "5.0.0-beta1"
   ],
   "description": "Timelion is learning some math",
