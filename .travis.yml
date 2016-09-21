@@ -2,7 +2,6 @@ language: node_js
 node_js:
 - node
 - 6
-- 5
 
 before_script:
 - npm install -g gulp
@@ -20,6 +19,7 @@ deploy:
   skip_cleanup: true
   on:
     repo: fermiumlabs/mathlion
+    node: '6'
     branch: 
       - master
       
