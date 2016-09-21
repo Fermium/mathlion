@@ -18,7 +18,7 @@ deploy:
   file: target/mathlion-*
   skip_cleanup: true
   on:
-  repo: fermiumlabs/mathlion
-  branch: 
-    - master
-    - deploy-test
+    repo: fermiumlabs/mathlion
+    branch: 
+      - master
+      - deploy-test
