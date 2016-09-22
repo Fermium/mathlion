@@ -3,13 +3,17 @@ var Datasource = require('../../../src/core_plugins/timelion/server/lib/classes/
 var _ = require('lodash');
 module.exports = new Datasource('nop', {
   args: [  ],
-  help: 'nope',
+  help: 'No operation. Is equivalent to value(0)',
   fn: function nop(args, tlConfig) {
+    var target = tlConfig.getTargetSeries();
+    var data = _.map(target, function(bucket){
+      return [bucket[0],0];
+    });
     return Promise.resolve({
       type: 'seriesList',
       list: [
         {
-          data: [0],
+          data: data,
           type: 'series',
           label: '',
           fit: args.byName.fit || 'average'

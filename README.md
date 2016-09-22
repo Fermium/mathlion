@@ -6,17 +6,50 @@
 Mathlion is a Kibana extension that enables equation parsing and advanced math under Timelion.
 Check out what it can do in the [documentation](http://mathlion.docs.fermiumlabs.com/)
 
+### Examples of .math()
+
+Function | Description                                  | Type
+:------- | :------------------------------------------- | :--------
+`math()` | Parse mathematical equations and expressions | Chainable
+
+Examples:
+
+```js
+.es(*).math("a=source")  //the variable "a" now contains the elasticsearch query.
+.nop().math("a")  //this row now equals the former elasticsearch query
+
+.es(*).math("source") //return the .es(*) query
+.es(*).math("source+5") // add 5 to the .es(*) query
+
+.nop().math("a=a+2 ; a=a+3 ")  //adds 5 to a
+.nop().math("a=a+2 ; a=a+3 ; a ")  //adds 5 to a and displays a+5
+
+.es(*).math("a=source")  //this query is invisible and does not generate an axis
+.es(*).math("a=source; a")  //this query does
+
+.nop.math("sqrt(3^2 + 4^2)") //returns 5
+
+//Calculate power comsumption based on measured current and stimated voltage (in Europe)
+.nop().math("electricPower(v,i)=(v*i)")
+.es(metric=avg:current).math(machineCurrent=source)
+.nop().math("elascPower(230,machineCurrent)")
+
+//plot the horizontal statistical mean and variance
+.es(*).math("me=mean(source); va=var(source)")
+.value(1).math(me*source) 
+.value(1).math("(me+sqrt(va))*source") 
+.value(1).math("(me-sqrt(va))*source")
+
+```
+
 ## Supported Kibana versions
 
 This plugin is supported by Kibana 5 alpha.
 
 ## Features:
 
-* Full math functions with syntax such as `.es(query).math("this*2")` or `.es(query).math(this*2)`
-* Save variables `.es(current).math-assing(i).hide(), .es(voltage).math-assign("v").hide()` both with or without quotes 
-* Thernary conditions, various test operators
-* Retrieve and elaborate on variables `.nop().math(v*i,label="power")` or `.es(current).math(v*this)`
-* Scientific costants, trigonometry etc etc.
-* Fast vector math
+* Full-featured math in Timelion
+* Variables and custom functions
+* Physical constants
 
-For upcoming features and todos check [here](https://github.com/fermiumlabs/mathlion/projects).
+For upcoming features and TODOs check [here](https://github.com/fermiumlabs/mathlion/projects).
