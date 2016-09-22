@@ -68,7 +68,7 @@ a=1 ; a=2; a+1 // exactly same as before, but returns directly 3 instead of a=3
 # Reference
 
 * [Physical constants](constants.md)
-* [Mathematical functions](functions.md)
+* [Mathematical functions](functions/index.md)
 * [Mathematical operators](operators.md)
 * [Units of measurement](functions.md)
 
