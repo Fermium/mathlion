@@ -27,7 +27,7 @@ module.exports = new Chainable('math', {
     var target = tlConfig.getTargetSeries(); //target series
     var inputequation = args.byName.function; //equation to evaluate
     var label = args.byName.label; //label for the plot
-
+    var isAssign = (inputequation.split(';').slice(-1)[0].indexOf('=') != -1);
     //initiate mathematical environment (scope)
     if(!mathenviroment.exists(envName)){
       mathenviroment.initSubEnviroment(envName);
@@ -46,15 +46,15 @@ module.exports = new Chainable('math', {
       */
       var vectoreq = equation.split('*').join('.*').split('/').join('./').split('^').join('.^');
       vectoreq = vectoreq.split('..*').join('.*').split('../').join('./').split('..^').join('.^');
-      var isAssign = (vectoreq.split(';').slice(-1)[0].indexOf('=') != -1); //check if eachseries is being elaborated
+       //check if eachseries is being elaborated
       var evaluated = math.eval(vectoreq,scope);//evaluate the new value/function in the scope
-      
+
       //In case of single value result of elaboration an horizontal line is plotted with the said value
       if(math.typeof(evaluated) == 'number' && !isAssign) {
-        var x = new Array(scope['this'].length).fill(evaluated);
+        var x = new Array(scope['source'].length).fill(evaluated);
         evaluated = x;
       }
-      return (isAssign) ? scope['this'] : evaluated;//return the correct thing to display
+      return (isAssign) ? scope['source'] : evaluated;//return the correct thing to display
 
     }
 
@@ -70,7 +70,7 @@ module.exports = new Chainable('math', {
       eachSeries.data = _.zip(times, values); //update series with new values
 
       //pretty print equation to string (for the axis label)
-      var eq = inputequation.split('source').join(eachSeries.label);
+      var eq = (isAssign) ?  eachSeries.label : inputequation.split('source').join(eachSeries.label);
       eachSeries.label = label != null ? label : eq;
       return eachSeries;
     });
