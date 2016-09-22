@@ -1,13 +1,5 @@
 # Supported functions of .math()
 
-## Core functions
-
-Function | Description
----- | -----------
-[config(config:&nbsp;Object):&nbsp;Object](functions/config.md) | Set configuration options for 
-[import(object,&nbsp;override)](functions/import.md) | Import functions from an object or a module.
-[typed(name,&nbsp;signatures)&nbsp;:&nbsp;function](functions/typed.md) | Create a typed-function which checks the types of the arguments and can match them against multiple provided signatures.
-
 ## Construction functions
 
 Function | Description
@@ -25,16 +17,6 @@ Function | Description
 [splitUnit(unit,&nbsp;parts)](functions/splitUnit.md) | Returns an array of units whose sum is equal to this unit.
 [string(value)](functions/string.md) | Create a string or convert any object into a string.
 [unit(x)](functions/unit.md) | Create a unit.
-
-## Expression functions
-
-Function | Description
----- | -----------
-[compile(expr)](functions/compile.md) | Parse and compile an expression.
-[eval(expr&nbsp;[,&nbsp;scope])](functions/eval.md) | Evaluate an expression.
-[help(search)](functions/help.md) | Retrieve help on a function or data type.
-[parse(expr&nbsp;[,&nbsp;scope])](functions/parse.md) | Parse an expression.
-[parser()](functions/parser.md) | Create a parser.
 
 ## Algebra functions
 
@@ -243,7 +225,6 @@ Function | Description
 
 Function | Description
 ---- | -----------
-[clone(x)](functions/clone.md) | Clone an object.
 [isInteger(x)](functions/isInteger.md) | Test whether a value is an integer number.
 [isNaN(x)](functions/isNaN.md) | Test whether a value is NaN (not a number).
 [isNegative(x)](functions/isNegative.md) | Test whether a value is negative: smaller than zero.
@@ -251,7 +232,6 @@ Function | Description
 [isPositive(x)](functions/isPositive.md) | Test whether a value is positive: larger than zero.
 [isPrime(x)](functions/isPrime.md) | Test whether a value is prime: has no divisors other than itself and one.
 [isZero(x)](functions/isZero.md) | Test whether a value is zero.
-[typeof(x)](functions/typeof.md) | Determine the type of a variable.
 
 
 

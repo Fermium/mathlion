@@ -3,6 +3,7 @@ var Chainable = require('../../../src/core_plugins/timelion/server/lib/classes/c
 var _ = require('lodash');
 var math = require('mathjs');
 var mathenviroment = require('./enviroment/math-enviroment');
+
 module.exports = new Chainable('math', {
   args: [
     {
@@ -12,42 +13,58 @@ module.exports = new Chainable('math', {
     {
       name: 'function',
       types: ['string'],
-      help: 'The function you want to evaluate'
+      help: 'The function to evaluate. Use \"source\" to refer to the preceding chainable'
     },
     {
       name: 'label',
       types: ['string', 'null']
     }
   ],
-  help: 'math stuff and whatever',
+  help: 'Advanced math parsing',
   fn: function mathChain(args, tlConfig) {
     var envName = tlConfig.server._sources[0]._requestCounter.value + ' '; //Name of the enviroment (# of the request)
-    var target = tlConfig.getTargetSeries(); //Gets the target series
-    var inputequation = args.byName.function; //Gets the equation to evaluate
-    var label = args.byName.label; //Possible label for the plot
-    mathenviroment.initSubEnviroment(envName);//Sets up the enviroment if necessary
-    mathenviroment.updateRequest(envName);//Updates the request
+    var target = tlConfig.getTargetSeries(); //target series
+    var inputequation = args.byName.function; //equation to evaluate
+    var label = args.byName.label; //label for the plot
+    
+    //initiate mathematical environment (scope) 
+    mathenviroment.initSubEnviroment(envName);
+    mathenviroment.updateRequest(envName);
 
-    /* Function that evaluate the equation and returns
-    the evaluated values if the function is to plot
-    or the datasource array of values of it has not to
+    /* 
+    Evaluate the user's input string
+    If the function is expected to be plotted return the result
+    Else, if the user it's just doing math, return the original datasource array
     */
     function evaluate(equation,scope) {
-      var vectoreq = equation.split('*').join('.*').split('/').join('./').split('^').join('.^');  //this +
-      vectoreq = vectoreq.split('..*').join('.*').split('../').join('./').split('..^').join('.^');//this to clean the string and let it operate with arrays
+      
+      /*
+      Parse and elaborate the string to convert normal operators to vector operators
+      Prevent various problems with numbers formatting
+      */
+      var vectoreq = equation.split('*').join('.*').split('/').join('./').split('^').join('.^'); 
+      vectoreq = vectoreq.split('..*').join('.*').split('../').join('./').split('..^').join('.^');
+      
       var isElaboration = vectoreq.split(';').slice(-1)[0].indexOf('=') !== -1; //check if eachseries is being elaborated
       var evaluated = math.eval(vectoreq,scope);//evaluate the new value/function in the scope
-      return (isElaboration) ? scope['this'] : evaluated;//return the correct thing to display
+      return (isElaboration) ? scope['source'] : evaluated;//return the correct thing to display
     }
+    
     return alter(args, function (eachSeries) {
-      var times = _.map(eachSeries.data, 0);//get the times
-      inputequation = inputequation.split('source').join('this');//Set source as alias for this
-      var val = _.map(eachSeries.data, 1); //get old values
-      mathenviroment.setScope(envName,{'this':val}); // add this to the enviroment
-      var values = evaluate(inputequation,mathenviroment.getScope(envName)); //evaluate stuff
-      eachSeries.data = _.zip(times, values);//fix new series
-      var eq = inputequation.split('this').join(eachSeries.label);//translate eq into label
-      eachSeries.label = label != null ? label : eq;//set label
+      var times = _.map(eachSeries.data, 0); //x axis
+      var val = _.map(eachSeries.data, 1); //y axis
+      
+      mathenviroment.setScope(envName,{'source':val}); //add source to the enviroment
+      
+      //evaluate the input equation inside the updated scope
+      var values = evaluate(inputequation,mathenviroment.getScope(envName));
+      
+      eachSeries.data = _.zip(times, values); //update series with new values
+      
+      //pretty print equation to string (for the axis label)
+      var eq = inputequation.split('source').join(eachSeries.label);
+      eachSeries.label = label != null ? label : eq;
+      
       return eachSeries;
     });
   }
