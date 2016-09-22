@@ -22,7 +22,9 @@ module.exports = new Chainable('math', {
   help: 'math stuff and whatever',
   fn: function mathChain(args, tlConfig) {
     var envName = tlConfig.server._sources[0]._requestCounter.value + ' ';
-    mathenviroment.updateRequest(envName);
+    if (mathenviroment.exists(envName)) {
+      mathenviroment.updateRequest(envName);
+	}
     var scope = new Object();
     var target = tlConfig.getTargetSeries();
     var inputequation = args.byName.function;

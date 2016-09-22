@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var math = require('mathjs');
 
 var scope = new Object();
 module.exports.initSubEnviroment = function (envName) {
@@ -13,10 +14,10 @@ module.exports.initSubEnviroment = function (envName) {
 
 };
 module.exports.getValues = function (envName) {
-  return scope[envName].values;
+  return (scope.hasOwnProperty(envName)) ? scope[envName].values : null;
 };
 module.exports.getTimes = function (envName) {
-  return scope[envName].times;
+  return (scope.hasOwnProperty(envName)) ? scope[envName].times : null;
 };
 module.exports.setValues = function (envName,values) {
   _.extend(scope[envName].values ,values);
@@ -27,7 +28,9 @@ module.exports.setTimes = function (envName,times) {
 module.exports.updateRequest = function (envName) {
   scope[envName].last_request = Date.now() / 1000;
 };
-
+module.exports.exists = function (envName) {
+  return scope.hasOwnProperty(envName);
+};
 
 var interval = setInterval (function (scope) {
   var now = Date.now() / 1000;
