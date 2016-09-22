@@ -2,7 +2,7 @@ var alter = require('../../../src/core_plugins/timelion/server/lib/alter.js');
 var Chainable = require('../../../src/core_plugins/timelion/server/lib/classes/chainable');
 var _ = require('lodash');
 var math = require('mathjs');
-var mathenviroment = require('./enviroment/math-enviroment');
+var mathenviroment = require('./math-enviroment');
 module.exports = new Chainable('math', {
   args: [
     {
@@ -25,6 +25,7 @@ module.exports = new Chainable('math', {
     var target = tlConfig.getTargetSeries(); //Gets the target series
     var inputequation = args.byName.function; //Gets the equation to evaluate
     var label = args.byName.label; //Possible label for the plot
+
     mathenviroment.initSubEnviroment(envName);//Sets up the enviroment if necessary
     mathenviroment.updateRequest(envName);//Updates the request
 
@@ -47,7 +48,7 @@ module.exports = new Chainable('math', {
       var values = evaluate(inputequation,mathenviroment.getScope(envName)); //evaluate stuff
       eachSeries.data = _.zip(times, values);//fix new series
       var eq = inputequation.split('this').join(eachSeries.label);//translate eq into label
-      eachSeries.label = label != null ? label : eq;//set label
+      eachSeries.label = label !== null ? label : math.parse(eq).toString();//set label
       return eachSeries;
     });
   }
