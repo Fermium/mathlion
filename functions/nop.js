@@ -5,11 +5,15 @@ module.exports = new Datasource('nop', {
   args: [  ],
   help: 'nope',
   fn: function nop(args, tlConfig) {
+    var target = tlConfig.getTargetSeries();
+    var data = _.map(target, function(bucket){
+      return [bucket[0],0];
+    });
     return Promise.resolve({
       type: 'seriesList',
       list: [
         {
-          data: [0],
+          data: data,
           type: 'series',
           label: '',
           fit: args.byName.fit || 'average'
