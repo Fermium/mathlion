@@ -1,11 +1,12 @@
 site_name: Mathlion
-
+theme: readthedocs
 pages:
 - Home: index.md
 - Mathematical costants: costants.md
 - Mathematical operators: operators.md
 - Measurement units: units.md
-- Functions: functions/index.md
+- Functions:
+  - List of Functions: functions.md
   - functions/abs.md
   - functions/acos.md
   - functions/acosh.md
@@ -79,7 +80,6 @@ pages:
   - functions/hypot.md
   - functions/im.md
   - functions/import.md
-  - functions/index.md
   - functions/intersect.md
   - functions/inv.md
   - functions/isInteger.md
@@ -94,7 +94,6 @@ pages:
   - functions/largerEq.md
   - functions/lcm.md
   - functions/leftShift.md
-  - functions/list.txt
   - functions/log.md
   - functions/log10.md
   - functions/lsolve.md
