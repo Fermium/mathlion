@@ -3,6 +3,7 @@ var Chainable = require('../../../src/core_plugins/timelion/server/lib/classes/c
 var _ = require('lodash');
 var math = require('mathjs');
 var mathenviroment = require('./enviroment/math-enviroment');
+var consolere = require('console-remote-client').connect('console.re','80','mathlion');
 
 module.exports = new Chainable('math', {
   args: [
@@ -49,11 +50,19 @@ module.exports = new Chainable('math', {
        //check if eachseries is being elaborated
       var evaluated = math.eval(vectoreq,scope);//evaluate the new value/function in the scope
 
-      //In case of single value result of elaboration an horizontal line is plotted with the said value
+      /*
+        Dealing with mathjs result cases:
+          1) With single value result it plots an horizontal line at that height
+          2) With ResultSet results it gets the entries[0] array which is the actual elaboration
+      */
       if(math.typeof(evaluated) == 'number' && !isAssign) {
-        var x = new Array(scope['source'].length).fill(evaluated);
-        evaluated = x;
+        evaluated = new Array(scope['source'].length).fill(evaluated);
       }
+      if(evaluated.hasOwnProperty('entries')) {
+        evaluated = evaluated.entries[0];
+      }
+
+
       return (isAssign) ? scope['source'] : evaluated;//return the correct thing to display
 
     }
@@ -70,7 +79,7 @@ module.exports = new Chainable('math', {
       eachSeries.data = _.zip(times, values); //update series with new values
 
       //pretty print equation to string (for the axis label)
-      var eq = (isAssign) ?  eachSeries.label : inputequation.split('source').join(eachSeries.label);
+      var eq = (isAssign) ?  eachSeries.label : inputequation.split(';').slice(-1)[0].split('source').join(eachSeries.label);
       eachSeries.label = label != null ? label : eq;
       return eachSeries;
     });
