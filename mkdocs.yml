@@ -1,0 +1,8 @@
+site_name: Mathlion
+
+pages:
+- Home: index.md
+- Mathematical costants: costants.md
+- Mathematical operators: operators.md
+- Measurement units: units.md
+- Functions: functions/index.md
