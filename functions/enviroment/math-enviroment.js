@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var math = require('mathjs');
 
+//allocate math environments based on the progressive number of the request
 var enviroment = new Object();
 module.exports.initSubEnviroment = function (envName) {
   enviroment[envName] = {
@@ -31,7 +32,7 @@ module.exports.updateRequest = function (envName) {
 module.exports.exists = function (envName) {
   return enviroment.hasOwnProperty(envName);
 };
-
+//destroy elements older than 10 seconds
 var interval = setInterval (function (enviroment) {
   var now = Date.now() / 1000;
   for (var key in enviroment) {

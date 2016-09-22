@@ -4,38 +4,9 @@
 # Mathlion
 
 Mathlion is a Kibana extension that enables equation parsing and advanced math under Timelion.
+Check out what it can do in the [documentation](http://mathlion.docs.fermiumlabs.com/)
 
-## Usage
-
-### .math-assign()
-
-Function         | Description                                           | Type
-:--------------- | :---------------------------------------------------- | :--------
-`.math-assign()` | Assign the value of the current series to a variable. | Chainable
-
-It's a function.
-
-Examples:
-
-```js
-.es(*).math-assign("a") 
-.es(*).math-assign("myvariable")
-```
-
-### .nop()
-
-Function | Description                                                                                      | Type
-:------- | :----------------------------------------------------------------------------------------------- | :---------
-`.nop()` | A fake datasource that returns no value at all. It's similar to `.value(0)` but more clean | Datasource
-
-Examples:
-
-```js
-.nop() //returns nothing at all
-.nop().math(variable) //retrieve variable
-```
-
-### .math()
+### Examples of .math()
 
 Function | Description                                  | Type
 :------- | :------------------------------------------- | :--------
@@ -44,41 +15,41 @@ Function | Description                                  | Type
 Examples:
 
 ```js
-.es(*).math-assign("a")
-.nop().math("a")  //this row now equals the former one
-.es(*).math("this") //return the .es(*) query
-.es(*).math("this+5") // add 5 to the .es(*) query
+.es(*).math("a=source")  //the variable "a" now contains the elasticsearch query.
+.nop().math("a")  //this row now equals the former elasticsearch query
+
+.es(*).math("source") //return the .es(*) query
+.es(*).math("source+5") // add 5 to the .es(*) query
+
+.nop().math("a=a+2 ; a=a+3 ")  //adds 5 to a
+.nop().math("a=a+2 ; a=a+3 ; a ")  //adds 5 to a and displays a+5
+
+.es(*).math("a=source")  //this query is invisible and does not generate an axis
+.es(*).math("a=source; a")  //this query does
+
 .nop.math("sqrt(3^2 + 4^2)") //returns 5
-```
 
-As you may have understood, `this` inside the mathematical expression returns the value of the precedent function. It acts as a local variable, and never exit the boundaries of the function you write it in.
+//Calculate power comsumption based on measured current and stimated voltage (in Europe)
+.nop().math("electricPower(v,i)=(v*i)")
+.es(metric=avg:current).math(machineCurrent=source)
+.nop().math("elascPower(230,machineCurrent)")
 
-You can do farly complex stuff inside a math function:
+//plot the horizontal statistical mean and variance
+.es(*).math("me=mean(source); va=var(source)")
+.value(1).math(me*source) 
+.value(1).math("(me+sqrt(va))*source") 
+.value(1).math("(me-sqrt(va))*source")
 
-```js
-mode(a) //compute the mode of the whole set of data in "a" in your window and display it as an y axis
-(a>0) ? (a=1) : (a=-1) //if is positive a=1, else a=-1\. A will be modified only temporarely for this equation
-a=1 ; a=2; a=a+1 // a is now 3, the sub-expressions are evaluated sequentially. The last is the one considered in the end 
-a=1 ; a=2; a+1 // exactly same as before, but returns directly 3 instead of a=3
 ```
 
 ## Supported Kibana versions
 
-This plugin is supported by Kibana 5 alpha
+This plugin is supported by Kibana 5 alpha.
 
-## Features
+## Features:
 
-#### Working features:
+* Full-featured math in Timelion
+* Variables and custom functions
+* Physical constants
 
-* Full math functions with syntax such as `.es(query).math("this*2")` or `.es(query).math(this*2)`
-* Save variables `.es(current).math-assing(i).hide(), .es(voltage).math-assign("v").hide()` both with or without quotes 
-* Thernary conditions, various test operators
-* Retrieve and elaborate on variables `.nop().math(v*i,label="power")` or `.es(current).math(v*this)`
-* Scientific costants, trigonometry etc etc.
-* Fast vector math
-
-#### Upcoming features:
-
-* Treat with units conversion `.es(query).math("this to Kw")`
-* String to number
-* Easily import other statistical and math functions in a similar way to the one Timelion uses, but instead allowing them to be used inside math equations
+For upcoming features and TODOs check [here](https://github.com/fermiumlabs/mathlion/projects).
