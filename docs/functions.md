@@ -1,4 +1,4 @@
-#Supported functions of .math()
+# Supported functions of .math()
 
 ## Core functions
 
