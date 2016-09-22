@@ -3,7 +3,7 @@ site_url: http://mathlion.docs.fermiumlabs.com
 site_description: Mathlion is a math extension for Timelion
 site_author: Fermium LABS
 
-theme: mkdocs
+theme: readthedocs
 
 repo_url: https://github.com/fermiumlabs/mathlion
 
