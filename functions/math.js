@@ -4,7 +4,6 @@ var _ = require('lodash');
 var math = require('mathjs');
 var mathenviroment = require('./enviroment/math-enviroment');
 
-//var consolere = require('console-remote-client').connect('console.re','80','mathlion');
 module.exports = new Chainable('math', {
   args: [
     {
@@ -49,9 +48,8 @@ module.exports = new Chainable('math', {
       vectoreq = vectoreq.split('..*').join('.*').split('../').join('./').split('..^').join('.^');
       var isAssign = (vectoreq.split(';').slice(-1)[0].indexOf('=') != -1); //check if eachseries is being elaborated
       var evaluated = math.eval(vectoreq,scope);//evaluate the new value/function in the scope
-      /*
-        In case of single value result of elaboration an horizontal line is plotted with the said value
-      */
+      
+      //In case of single value result of elaboration an horizontal line is plotted with the said value
       if(math.typeof(evaluated) == 'number' && !isAssign) {
         var x = new Array(scope['this'].length).fill(evaluated);
         evaluated = x;
