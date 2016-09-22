@@ -1,5 +1,12 @@
 site_name: Mathlion
+site_url: http://mathlion.docs.fermiumlabs.com
+site_description: Mathlion is a math extension for Timelion
+site_author: Fermium LABS
+
 theme: readthedocs
+
+repo_url: https://github.com/fermiumlabs/mathlion
+
 pages:
 - Home: index.md
 - Mathematical costants: costants.md
@@ -157,3 +164,8 @@ pages:
   - functions/xgcd.md
   - functions/xor.md
   - functions/zeros.md  
+  
+copyright: Copyright &copy; 2016 <a href="https://fermiumlabs.com">Fermium LABS srl</a>.
+  
+
+  
