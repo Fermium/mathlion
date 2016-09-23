@@ -51,8 +51,9 @@ module.exports = new Chainable('math', {
 
       /*
         Dealing with mathjs result cases:
-          1) With single value result it plots an horizontal line at that height
-          2) With ResultSet results it gets the entries[0] array which is the actual elaboration
+          1) Converting Unit objects to their value in said measure
+          2) With single value result it plots an horizontal line at that height
+          3) With ResultSet results it gets the entries[0] array which is the actual elaboration
       */
       if(math.typeof(evaluated[0]) == 'Unit') {
         var x = new Array(scope['source'].length);
