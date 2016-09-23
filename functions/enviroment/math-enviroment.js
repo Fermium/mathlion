@@ -1,6 +1,5 @@
 var _ = require('lodash');
 var math = require('mathjs');
-var consolere = require('console-remote-client').connect('console.re','80','mathlion');
 
 //allocate math environments based on the progressive number of the request
 var enviroment = new Object();
@@ -34,25 +33,3 @@ var interval = setInterval (function (enviroment) {
     }
   }
 } , 10000,enviroment);
-
-/*math.import({
-  autoscale: function(array) {
-    var units = _.map(array, function(a){
-      return a.toJSON().unit;
-    });
-    var a = new Object();
-    for(var i=0;i<units.length;i++){
-      a[units[i]]=1 + (a[units[i]] || 0);
-    }
-    var unit = '', max = -Infinity, x;
-    for( x in a) {
-        if( a[x] > max) {
-          max = a[x];
-          unit = x;
-        }
-    }
-    console.re.log(x);
-    console.re.log(max);
-  }
-});
-*/

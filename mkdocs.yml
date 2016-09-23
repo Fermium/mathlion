@@ -154,7 +154,6 @@ pages:
   - functions/to.md
   - functions/trace.md
   - functions/transpose.md
-  - functions/typed.md
   - functions/unaryMinus.md
   - functions/unaryPlus.md
   - functions/unequal.md
