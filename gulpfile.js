@@ -55,7 +55,7 @@ function syncPluginTo(dest, done) {
             .set('delete')
             .exclude(exclude)
             .output(function(data) {
-              process.stdout.write(data.toString('utf8'));
+              //process.stdout.write(data.toString('utf8'));
             });
           rsync.execute(function(err) {
             if (err) {
