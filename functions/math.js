@@ -20,7 +20,7 @@ module.exports = new Chainable('math', {
       types: ['string', 'null']
     }
   ],
-  help: 'Advanced math parsing',
+  help: 'Advanced math parsing.',
   fn: function mathChain(args, tlConfig) {
     var envName = tlConfig.server._sources[0]._requestCounter.value + ' '; //Name of the enviroment (# of the request)
 
@@ -28,6 +28,7 @@ module.exports = new Chainable('math', {
     var inputequation = args.byName.function; //equation to evaluate
     var label = args.byName.label; //label for the plot
     var isAssign = (inputequation.split(';').slice(-1)[0].indexOf('=') != -1);
+    var unit = '';
     //initiate mathematical environment (scope)
     if(!mathenviroment.exists(envName)){
       mathenviroment.initSubEnviroment(envName);
@@ -48,25 +49,29 @@ module.exports = new Chainable('math', {
       vectoreq = vectoreq.split('..*').join('.*').split('../').join('./').split('..^').join('.^');
        //check if eachseries is being elaborated
       var evaluated = math.eval(vectoreq,scope);//evaluate the new value/function in the scope
-
       /*
         Dealing with mathjs result cases:
-          1) Converting Unit objects to their value in said measure
-          2) With single value result it plots an horizontal line at that height
-          3) With ResultSet results it gets the entries[0] array which is the actual elaboration
+          1) With ResultSet results it gets the entries[0] array which is the actual elaboration
+          2) Converting Unit objects to their value in said measure
+          3) With single value result it plots an horizontal line at that height
       */
-      if(math.typeof(evaluated[0]) == 'Unit') {
-        var x = new Array(scope['source'].length);
-        for(var i=0;i<x.length;i++){
-          x[i]=math.number(evaluated[i],evaluated[i].toJSON().unit);
-        }
-        evaluated  = x;
-      }
-      if(math.typeof(evaluated) == 'number' && !isAssign) {
-        evaluated = new Array(scope['source'].length).fill(evaluated);
-      }
-      if(evaluated.hasOwnProperty('entries')) {
+      if (evaluated.hasOwnProperty('entries')) {
         evaluated = evaluated.entries[0];
+      }
+      if (math.typeof(evaluated[0]) == 'Unit') {
+          //math.autoscale(evaluated);
+          unit = '   [' + evaluated[0].toJSON().unit + ']';
+          evaluated = _.map(evaluated,function(ev){
+          return math.number(ev,ev.toJSON().unit);
+        });
+
+      }
+      if (math.typeof(evaluated) == 'Unit') {
+        unit = '   [' + evaluated.toJSON().unit + ']';
+        evaluated = math.number(evaluated,evaluated.toJSON().unit);
+      }
+      if (math.typeof(evaluated) == 'number' && !isAssign) {
+        evaluated = new Array(scope['source'].length).fill(evaluated);
       }
       return (isAssign) ? scope['source'] : evaluated;//return the correct thing to display
 
@@ -86,6 +91,7 @@ module.exports = new Chainable('math', {
       //pretty print equation to string (for the axis label)
       var eq = (isAssign) ?  eachSeries.label : inputequation.split(';').slice(-1)[0].split('source').join(eachSeries.label);
       eachSeries.label = label != null ? label : eq;
+      eachSeries.label = eachSeries.label + unit;
       return eachSeries;
     });
   }
