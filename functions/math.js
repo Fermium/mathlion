@@ -13,7 +13,7 @@ module.exports = new Chainable('math', {
     {
       name: 'function',
       types: ['string'],
-      help: 'The function to evaluate. Use \"source\" to refer to the preceding chainable'
+      help: 'The function to evaluate. Use \"source\" to refer to the preceding chainable. Check out mathlion.docs.fermiumlabs.com'
     },
     {
       name: 'label',

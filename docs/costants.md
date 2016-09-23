@@ -1,4 +1,4 @@
-# Supported phisical costants of .math()
+# Supported phisical costants
 This section lists all available units, prefixes, and physical constants. These can be used via the Unit object, or via `math.eval()`.
 
 ## Reference
