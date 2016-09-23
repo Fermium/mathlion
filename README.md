@@ -6,13 +6,19 @@
 Mathlion is a Kibana extension that enables equation parsing and advanced math under Timelion.
 Check out what it can do in the [documentation](http://mathlion.docs.fermiumlabs.com/)
 
-### Examples of .math()
+### Installation
 
-Function | Description                                  | Type
-:------- | :------------------------------------------- | :--------
-`math()` | Parse mathematical equations and expressions | Chainable
+Copy the last installation url for your version of Kibana from [the repository releases](https://github.com/fermiumlabs/mathlion/releases/latest). The file follows the naming `mathlion-major.minor.patch.zip` where the version indicated it's the one in Kibana.
 
-Examples:
+Remember that starting from Kibana 5.0 you always need an update version of every plugin for it to start as indicated [here](https://siren.solutions/in-kibana-5-all-your-plugins-will-break-at-each-and-every-update/).
+
+```sh
+#kibana >5
+
+./bin/kibana-plugin install  https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-major.minor.patch.zip
+```
+
+### Examples
 
 ```js
 .es(*).math("a=source")  //the variable "a" now contains the elasticsearch query.
@@ -44,12 +50,15 @@ Examples:
 
 ## Supported Kibana versions
 
-This plugin is supported by Kibana 5 alpha.
+This plugin is supported by:
+
+* Kibana 5 beta 1.
 
 ## Features:
 
 * Full-featured math in Timelion
 * Variables and custom functions
 * Physical constants
+* Units of measurement
 
 For upcoming features and TODOs check [here](https://github.com/fermiumlabs/mathlion/projects).
