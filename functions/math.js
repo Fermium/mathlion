@@ -3,7 +3,6 @@ var Chainable = require('../../../src/core_plugins/timelion/server/lib/classes/c
 var _ = require('lodash');
 var math = require('mathjs');
 var mathenviroment = require('./enviroment/math-enviroment');
-var consolere = require('console-remote-client').connect('console.re','80','mathlion');
 
 module.exports = new Chainable('math', {
   args: [
@@ -55,14 +54,19 @@ module.exports = new Chainable('math', {
           1) With single value result it plots an horizontal line at that height
           2) With ResultSet results it gets the entries[0] array which is the actual elaboration
       */
+      if(math.typeof(evaluated[0]) == 'Unit') {
+        var x = new Array(scope['source'].length);
+        for(var i=0;i<x.length;i++){
+          x[i]=math.number(evaluated[i],evaluated[i].toJSON().unit);
+        }
+        evaluated  = x;
+      }
       if(math.typeof(evaluated) == 'number' && !isAssign) {
         evaluated = new Array(scope['source'].length).fill(evaluated);
       }
       if(evaluated.hasOwnProperty('entries')) {
         evaluated = evaluated.entries[0];
       }
-
-
       return (isAssign) ? scope['source'] : evaluated;//return the correct thing to display
 
     }
