@@ -11,7 +11,8 @@ pages:
 - Home: index.md
 - Mathematical costants: costants.md
 - Mathematical operators: operators.md
-- Functions: functions.md
+- Mathematical Functions: functions.md
+- Units of measurement: units.md
 - Functions list:
   - functions/abs.md
   - functions/acos.md
