@@ -1,15 +1,25 @@
 language: node_js
 node_js:
 - 6
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+      
 env:
 - KIBANA_VERSION="5.0.0-beta1"
+- CXX=g++-4.8
+
 services:
   - elasticsearch
 sudo: required
 
 before_script:
 - npm install -g gulp
-- wget https://download.elastic.co/kibana/kibana-snapshot/kibana-${KIBANA_VERSION}-SNAPSHOT-amd64.deb -o kibana.deb
+- wget -O kibana.deb https://download.elastic.co/kibana/kibana-snapshot/kibana-${KIBANA_VERSION}-SNAPSHOT-amd64.deb 
 - sudo dpkg -i kibana.deb
 
 script:
