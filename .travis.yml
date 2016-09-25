@@ -5,11 +5,12 @@ env:
 - KIBANA_VERSION="5.0.0-beta1"
 services:
   - elasticsearch
+sudo: required
 
 before_script:
 - npm install -g gulp
-- dpkg -i kibana.deb
 - wget https://download.elastic.co/kibana/kibana-snapshot/kibana-$(echo "$KIBANA_VERSION")-SNAPSHOT-amd64.deb -o kibana.deb
+- sudo dpkg -i kibana.deb
 
 script:
 - gulp build
