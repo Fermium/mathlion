@@ -8,8 +8,8 @@ services:
 
 before_script:
 - npm install -g gulp
-- wget "https://download.elastic.co/kibana/kibana-snapshot/kibana-$(KIBANA_VERSION)-SNAPSHOT-amd64.deb" -o kibana.deb
 - dpkg -i kibana.deb
+- wget https://download.elastic.co/kibana/kibana-snapshot/kibana-$(echo "$KIBANA_VERSION")-SNAPSHOT-amd64.deb -o kibana.deb
 
 script:
 - gulp build
