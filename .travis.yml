@@ -1,13 +1,20 @@
 language: node_js
 node_js:
 - 6
+env:
+- KIBANA_VERSION="5.0.0-beta1"
+services:
+  - elasticsearch
 
 before_script:
 - npm install -g gulp
+- wget "https://download.elastic.co/kibana/kibana-snapshot/kibana-$(KIBANA_VERSION)-SNAPSHOT-amd64.deb" -o kibana.deb
+- dpkg -i kibana.deb
 
 script:
 - gulp build
 - gulp package
+- 
 
 deploy:
   provider: releases
