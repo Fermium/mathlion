@@ -4,10 +4,14 @@ node_js:
 - 4 
 before_script:
 - npm install -g gulp
+- curl -O https://raw.githubusercontent.com/rockymadden/transfer-cli/master/src/transfer && chmod +x transfer
 
 script:
 - gulp build
 - gulp package
+
+after_success:
+- ./transfer upload target
 
 deploy:
   provider: releases
