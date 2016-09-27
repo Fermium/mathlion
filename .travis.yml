@@ -3,7 +3,7 @@ node_js:
 - 4
 - 5
 - 6
-- latest 
+- node 
 
 addons:
   apt:
@@ -46,4 +46,3 @@ deploy:
     node: 4      
 notifications:
   email: false
-
