@@ -13,25 +13,25 @@ addons:
       - g++-4.8
       
 env:
-- KIBANA_VERSION="5.0.0-beta1" CXX="g++-4.8"
+- CXX="g++-4.8" KIBANA_VERSION="5.0.0-beta1"
 
 services:
   - elasticsearch
-sudo: required
 
 before_script:
 - npm install -g gulp
-- wget -O kibana.deb https://download.elastic.co/kibana/kibana-snapshot/kibana-${KIBANA_VERSION}-SNAPSHOT-amd64.deb 
-- sudo dpkg -i kibana.deb
+- wget -O kibana.tar.gz https://github.com/elastic/kibana/archive/v${KIBANA_VERSION}.tar.gz
+- mkdir -p kibana && tar -zxvf kibana.tar.gz -C kibana --strip-components=1
+- nohup ./kibana/bin/kibana --no-ssl 
+- sleep 20
 - curl -O https://raw.githubusercontent.com/rockymadden/transfer-cli/master/src/transfer && chmod +x transfer
 
 script:
 - gulp build
 - gulp package
+- ./kibana/bin/kibana-plugin install $(./transfer upload target/mathlion-${KIBANA_VERSION}.zip)
 
 
-after_success:
-- ./transfer upload target
 
 deploy:
   provider: releases
