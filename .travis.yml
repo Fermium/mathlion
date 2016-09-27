@@ -22,8 +22,8 @@ before_script:
 - npm install -g gulp
 - wget -O kibana.tar.gz https://github.com/elastic/kibana/archive/v${KIBANA_VERSION}.tar.gz
 - mkdir -p kibana && tar -zxf kibana.tar.gz -C kibana --strip-components=1
-- ./kibana/bin/kibana --no-ssl 
 - sh -c 'cd kibana && npm install'
+- ./kibana/bin/kibana --no-ssl 
 - sleep 20
 - curl -O https://raw.githubusercontent.com/rockymadden/transfer-cli/master/src/transfer && chmod +x transfer
 
