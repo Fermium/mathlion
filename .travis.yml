@@ -13,8 +13,7 @@ addons:
       - g++-4.8
       
 env:
-- KIBANA_VERSION="5.0.0-beta1"
-- CXX=g++-4.8
+- KIBANA_VERSION="5.0.0-beta1" CXX="g++-4.8"
 
 services:
   - elasticsearch
