@@ -1,7 +1,10 @@
 language: node_js
 node_js:
+- 4
+- 5
 - 6
-- 4 
+- latest 
+
 before_script:
 - npm install -g gulp
 - curl -O https://raw.githubusercontent.com/rockymadden/transfer-cli/master/src/transfer && chmod +x transfer
