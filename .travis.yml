@@ -12,7 +12,7 @@ addons:
     packages:
       - g++-4.8
       - oracle-java8-installer
-
+sudo: required
       
 env:
 - CXX="g++-4.8" KIBANA_VERSION="5.0.0-beta1"
@@ -26,7 +26,7 @@ before_script:
 - wget -O elasticsearch.tar.gz https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${KIBANA_VERSION}.tar.gz
 - mkdir -p kibana && tar -zxf kibana.tar.gz -C kibana --strip-components=1
 - mkdir -p elasticsearch && tar -zxf elasticsearch.tar.gz -C elasticsearch --strip-components=1
-- wget https://raw.githubusercontent.com/michaelklishin/jdk_switcher/master/jdk_switcher.sh && chmod +x jdk_switcher.sh && ./jdk_switcher.sh use oraclejdk8
+- echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 - sh -c 'cd kibana && npm install'
 - ./elasticsearch/bin/elasticsearch 
 - ./kibana/bin/kibana --no-ssl 
