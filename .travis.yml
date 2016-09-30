@@ -27,7 +27,7 @@ before_script:
 - wget -O elasticsearch.tar.gz https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${KIBANA_VERSION}.tar.gz
 - mkdir -p kibana && tar -zxf kibana.tar.gz -C kibana --strip-components=1
 - mkdir -p elasticsearch && tar -zxf elasticsearch.tar.gz -C elasticsearch --strip-components=1
-- sudo apt-get install oracle-java8-set-default
+- sudo apt-get install -y oracle-java8-set-default
 - sh -c 'cd kibana && npm install'
 - ./elasticsearch/bin/elasticsearch 
 - ./kibana/bin/kibana --no-ssl 
