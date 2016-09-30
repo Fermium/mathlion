@@ -13,7 +13,8 @@ addons:
       - g++-4.8
       - oracle-java8-installer
 sudo: required
-      
+dist: trusty
+  
 env:
 - CXX="g++-4.8" KIBANA_VERSION="5.0.0-beta1"
 
@@ -26,7 +27,7 @@ before_script:
 - wget -O elasticsearch.tar.gz https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${KIBANA_VERSION}.tar.gz
 - mkdir -p kibana && tar -zxf kibana.tar.gz -C kibana --strip-components=1
 - mkdir -p elasticsearch && tar -zxf elasticsearch.tar.gz -C elasticsearch --strip-components=1
-- echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+- sudo apt-get install oracle-java8-set-default
 - sh -c 'cd kibana && npm install'
 - ./elasticsearch/bin/elasticsearch 
 - ./kibana/bin/kibana --no-ssl 
