@@ -11,15 +11,11 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-      - oracle-java8-installer
 sudo: required
 dist: trusty
   
 env:
 - CXX="g++-4.8" KIBANA_VERSION="5.0.0-beta1"
-
-services:
-  - elasticsearch
 
 before_script:
 - npm install -g gulp
