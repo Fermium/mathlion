@@ -31,7 +31,7 @@ script:
 - gulp build
 - gulp package
 - ./kibana/bin/kibana-plugin install $(./transfer upload target/mathlion-${KIBANA_VERSION}.zip)
-- nohup ./kibana/bin/kibana --no-ssl 
+- nohup bash -c "./kibana/bin/kibana --no-ssl>&1 &"
 - sleep 120
 - if [ "$(grep -c "error" nohup.out)" -ge 1 ]; then exit 1 
 deploy:
