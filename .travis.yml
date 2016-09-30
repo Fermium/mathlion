@@ -19,8 +19,8 @@ env:
 
 before_script:
 - npm install -g gulp
-- wget -O kibana.tar.gz https://github.com/elastic/kibana/archive/v${KIBANA_VERSION}.tar.gz
-- wget -O elasticsearch.tar.gz https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${KIBANA_VERSION}.tar.gz
+- wget -O kibana.tar.gz https://download.elastic.co/kibana//kibana-${KIBANA_VERSION}-linux-x86_64.tar.gz
+- wget -O elasticsearch.tar.gz https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz
 - mkdir -p kibana && tar -zxf kibana.tar.gz -C kibana --strip-components=1
 - mkdir -p elasticsearch && tar -zxf elasticsearch.tar.gz -C elasticsearch --strip-components=1
 - sh -c 'cd kibana && npm install'
