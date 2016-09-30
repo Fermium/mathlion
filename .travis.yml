@@ -1,9 +1,9 @@
 language: node_js
 node_js:
 - 4
-- 5
-- 6
-- node 
+#- 5
+#- 6
+#- node 
 
 addons:
   apt:
@@ -27,9 +27,8 @@ before_script:
 - wget -O elasticsearch.tar.gz https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${KIBANA_VERSION}.tar.gz
 - mkdir -p kibana && tar -zxf kibana.tar.gz -C kibana --strip-components=1
 - mkdir -p elasticsearch && tar -zxf elasticsearch.tar.gz -C elasticsearch --strip-components=1
-- sudo apt-get install -y oracle-java8-set-default
 - sh -c 'cd kibana && npm install'
-- ./elasticsearch/bin/elasticsearch 
+- curl -O hhttps://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${KIBANA_VERSION}.deb && sudo dpkg -i --force-confnew elasticsearch-${KIBANA_VERSION}.deb && sudo service elasticsearch restart
 - ./kibana/bin/kibana --no-ssl 
 - sleep 20
 - curl -O https://raw.githubusercontent.com/rockymadden/transfer-cli/master/src/transfer && chmod +x transfer
