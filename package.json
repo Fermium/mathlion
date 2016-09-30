@@ -1,6 +1,6 @@
 {
   "name": "mathlion",
-  "version": "4.x",
+  "version": "4",
   "description": "Timelion is learning some math",
   "main": "gulpfile.js",
   "scripts": {
