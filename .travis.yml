@@ -24,7 +24,7 @@ before_script:
 - mkdir -p kibana && tar -zxf kibana.tar.gz -C kibana --strip-components=1
 - mkdir -p elasticsearch && tar -zxf elasticsearch.tar.gz -C elasticsearch --strip-components=1
 - sh -c 'cd kibana && npm install'
-- curl -O hhttps://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${KIBANA_VERSION}.deb && sudo dpkg -i --force-confnew elasticsearch-${KIBANA_VERSION}.deb && sudo service elasticsearch restart
+- curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${KIBANA_VERSION}.deb && sudo dpkg -i --force-confnew elasticsearch-${KIBANA_VERSION}.deb && sudo service elasticsearch restart
 - ./kibana/bin/kibana --no-ssl 
 - sleep 20
 - curl -O https://raw.githubusercontent.com/rockymadden/transfer-cli/master/src/transfer && chmod +x transfer
