@@ -1,10 +1,10 @@
 {
   "name": "mathlion",
-  "version": "5.0.0-beta1",
+  "version": "beta1",
   "kibanas": [
     "5.0.0-beta1"
   ],
-  "description": "Timelion is learning some math",
+  "description": "Advanced math extension for Timelion",
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp dev",
@@ -14,10 +14,8 @@
   },
   "devDependencies": {
     "@elastic/eslint-config-kibana": "^0.1.0",
-    "aws-sdk": "^2.4.7",
     "babel-eslint": "^4.1.8",
     "bluebird": "^3.1.1",
-    "babel-register": "^6.14.0",
     "eslint": "^1.10.3",
     "eslint-plugin-mocha": "^1.1.0",
     "glob": "^7.0.5",
@@ -27,7 +25,6 @@
     "gulp-tar": "^1.8.0",
     "gulp-util": "^3.0.7",
     "gulp-zip": "^3.2.0",
-    "lodash": "^3.10.1",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.5.0",
     "rsync": "^0.4.0"
