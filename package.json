@@ -1,9 +1,6 @@
 {
   "name": "mathlion",
   "version": "0.1.0-beta1",
-  "kibanas": [
-    "5.0.0-beta1"
-  ],
   "description": "Advanced math extension for Timelion",
   "main": "gulpfile.js",
   "scripts": {

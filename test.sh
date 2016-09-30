@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 echo "installing the plugin"
-./kibana/bin/kibana-plugin install $(./transfer upload target/mathlion-${KIBANA_VERSION}.zip)
+./kibana/bin/kibana plugin --install -u $(./transfer upload target/mathlion-${KIBANA_VERSION}.zip)
 
 echo "starting kibana in the background"
-nohup bash -c "./kibana/bin/kibana --no-ssl>&1 &"
+nohup bash -c "./kibana/bin/kibana>&1 &"
 
 echo "Waiting for 120 seconds..."
 sleep 120
