@@ -15,7 +15,7 @@ sudo: required
 dist: trusty
   
 env:
-- CXX="g++-4.8" KIBANA_VERSION="5.0.0-beta1"
+- CXX="g++-4.8" KIBANA_VERSION="4.6.1" ELASTICSEARCH_VERSION="2.4.1"
 
 before_script:
 - npm install -g gulp
@@ -24,7 +24,7 @@ before_script:
 - mkdir -p kibana && tar -zxf kibana.tar.gz -C kibana --strip-components=1
 - mkdir -p elasticsearch && tar -zxf elasticsearch.tar.gz -C elasticsearch --strip-components=1
 - sh -c 'cd kibana && npm install'
-- curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${KIBANA_VERSION}.deb && sudo dpkg -i --force-confnew elasticsearch-${KIBANA_VERSION}.deb && sudo service elasticsearch restart
+- curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}.deb && sudo dpkg -i --force-confnew elasticsearch-${KIBANA_VERSION}.deb && sudo service elasticsearch restart
 - curl -O https://raw.githubusercontent.com/rockymadden/transfer-cli/master/src/transfer && chmod +x transfer
 
 script:
