@@ -13,9 +13,12 @@ Copy the last installation url for your version of Kibana from [the repository r
 Remember that starting from Kibana 5.0 you always need an update version of every plugin for it to start as indicated [here](https://siren.solutions/in-kibana-5-all-your-plugins-will-break-at-each-and-every-update/).
 
 ```sh
-#kibana >5
+#Kibana >= 5.x
 
 ./bin/kibana-plugin install  https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-major.minor.patch.zip
+
+#Kibana <= 4.x
+./bin/kibana --install mathlion -u https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-major.minor.patch.zip
 ```
 
 ### Examples
@@ -52,7 +55,10 @@ Remember that starting from Kibana 5.0 you always need an update version of ever
 
 This plugin is supported by:
 
-* Kibana 5 beta 1.
+* Kibana 5 beta 1
+* Kibana 4.x (check out branch [backport-4](https://github.com/fermiumlabs/mathlion/tree/backport-4))
+
+We regularly test only for Kibana 5. If you find bugs on Kibana 4 you can open a issue, but we would prefer a pull request.
 
 ## Features:
 

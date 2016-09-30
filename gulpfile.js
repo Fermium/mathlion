@@ -15,7 +15,6 @@ var fs = require('fs');
 var glob = require('glob');
 
 var zip = require('gulp-zip');
-var aws = require('aws-sdk');
 
 var pkg = require('./package.json');
 
