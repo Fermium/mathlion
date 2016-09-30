@@ -30,12 +30,10 @@ before_script:
 script:
 - gulp build
 - gulp package
-- sleep 120
 - ./kibana/bin/kibana-plugin install $(./transfer upload target/mathlion-${KIBANA_VERSION}.zip)
 - nohup ./kibana/bin/kibana --no-ssl 
-
-
-
+- sleep 120
+- if [ "$(grep -c "error" nohup.out)" -ge 1 ]; then exit 1 
 deploy:
   provider: releases
   file_glob: true
