@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
-#echo "installing the plugin"
-#./kibana/bin/kibana plugin --install mathlion -u $(./transfer upload target/mathlion-${KIBANA_VERSION}.zip)
+echo "installing the plugin"
+./kibana/bin/kibana plugin --install mathlion -u $(./transfer upload target/mathlion-${KIBANA_VERSION}.zip)
 
 echo "starting kibana in the background"
 nohup bash -c "./kibana/bin/kibana>&1 &"
