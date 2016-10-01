@@ -28,6 +28,7 @@ before_script:
 script:
 - gulp build
 - gulp package
+- ./kibana/bin/kibana plugin --install mathlion -u $(./transfer upload target/mathlion-${KIBANA_VERSION}.zip)
 - bash test.sh
 
 deploy:
