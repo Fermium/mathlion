@@ -14,6 +14,7 @@ dist: trusty
 env:
 - CXX="g++-4.8" KIBANA_VERSION="5.0.0-beta1" ELASTICSEARCH_VERSION="5.0.0-beta1"
 
+
 before_script:
 - npm install -g gulp
 - wget -O kibana.tar.gz https://github.com/elastic/kibana/archive/v${KIBANA_VERSION}.tar.gz
