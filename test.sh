@@ -1,5 +1,9 @@
 #!/bin/bash
 set -e
+
+echo "installing timelion"
+./kibana/bin/kibana plugin --install elastic/timelion
+
 echo "installing the plugin"
 ./kibana/bin/kibana plugin --install mathlion -u $(./transfer upload target/mathlion-*.zip)
 
@@ -12,6 +16,13 @@ sleep 120
 echo "Kibana log:"
 cat nohup.out
 
-echo "Checks for error in the kibana log of the last 120 seconds"
-! grep -Fxq "error" nohup.out
-! grep -Fxq "Skipping non-plugin directory" nohup.out
+echo "testing for errors..."
+if grep --ignore-case -q "error" nohup.out; then
+    echo "error!" && exit 1 
+fi
+
+if grep -q "Skipping non-plugin directory" nohup.out; then
+    echo "error!" && exit 1 
+fi
+
+echo "No errors found"
