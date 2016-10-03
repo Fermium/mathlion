@@ -4,6 +4,11 @@
   "kibanas": [
     "5.0.0-beta1"
   ],
+  "repository": {
+    "type": "git",
+    "url" : "https://github.com/fermiumlabs/mathlion"
+  },
+  "license": "Apache",
   "description": "Advanced math extension for Timelion",
   "main": "gulpfile.js",
   "scripts": {
