@@ -1,20 +1,34 @@
 language: node_js
 node_js:
 - 4
-- 5
-- 6
-- node 
+#- 5
+#- 6
+#- node 
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+sudo: required
+dist: trusty
+  
+env:
+- CXX="g++-4.8" KIBANA_VERSION="4.6.1" ELASTICSEARCH_VERSION="2.4.1"
 
 before_script:
 - npm install -g gulp
+- wget -O kibana.tar.gz https://github.com/elastic/kibana/archive/v${KIBANA_VERSION}.tar.gz
+- mkdir -p kibana && tar -zxf kibana.tar.gz -C kibana --strip-components=1
+- sh -c 'cd kibana && npm install'
+- curl -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/${ELASTICSEARCH_VERSION}/elasticsearch-${ELASTICSEARCH_VERSION}.deb && sudo dpkg -i --force-confnew elasticsearch-${ELASTICSEARCH_VERSION}.deb && sudo service elasticsearch restart
 - curl -O https://raw.githubusercontent.com/rockymadden/transfer-cli/master/src/transfer && chmod +x transfer
 
 script:
 - gulp build
 - gulp package
-
-after_success:
-- ./transfer upload target
+- bash test.sh
 
 deploy:
   provider: releases
