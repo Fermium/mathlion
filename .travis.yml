@@ -22,8 +22,10 @@ before_script:
 - sh -c 'cd kibana && npm install'
 - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}.deb && sudo dpkg -i --force-confnew elasticsearch-${ELASTICSEARCH_VERSION}.deb && sudo service elasticsearch restart
 - curl -O https://raw.githubusercontent.com/rockymadden/transfer-cli/master/src/transfer && chmod +x transfer
+- pip install mkdocs
 
 script:
+- mkdocs build
 - gulp build
 - gulp package
 - bash test.sh
