@@ -21,11 +21,13 @@ var pkg = require('./package.json');
 // relative location of Kibana install
 var pathToKibana = '../kibana';
 
-var buildDir = path.resolve(__dirname, 'build');
+var buildDir = path.resolve(__dirname, 'build/kibana');
+var packageRoot = path.resolve(__dirname, 'build');
 
 var targetDir = path.resolve(__dirname, 'target');
 var buildTarget = path.resolve(buildDir, pkg.name);
-var kibanaPluginDir = path.resolve(__dirname, pathToKibana, 'installedPlugins', pkg.name);
+var kibanaPluginDir = path.resolve(__dirname, pathToKibana, 'plugins', pkg.name);
+
 
 var include = [
   'package.json',
@@ -112,15 +114,31 @@ gulp.task('build', ['clean'], function(done) {
 });
 
 gulp.task('package', ['build'], function(done) {
+  function writePackages(versions, done) {
+    if (!versions.length) {
+      done();
+      return;
+    }
 
-    var archiveName = pkg.name + '-' + pkg.version + '.zip';
+    // Write a new version so it works with the Kibana package manager
+    var editable = _.cloneDeep(pkg);
+    editable.version = versions.shift();
+    require('fs').writeFileSync(buildTarget + '/' + 'package.json', JSON.stringify(editable, null, '  '));
 
-    return gulp.src(path.join(buildDir, '**', '*'))
+    var archiveName = editable.name + '-' + editable.version + '.zip';
+
+    gulp.src(path.join(packageRoot, '**', '*'))
       .pipe(zip(archiveName))
       .pipe(gulp.dest(targetDir))
       .on('end', function() {
         gutil.log('Packaged', archiveName);
+        writePackages(versions, done);
       });
+  }
+
+  // Write one archive for every supported kibana version, plus one with the actual timelion version
+
+  writePackages(pkg.kibanas.concat([pkg.version]), done);
 });
 
 

@@ -1,4 +1,4 @@
-## units
+## Units
 
 In Mathlion you can assign units to any number of variables. Once you have assigned a unit you must keep working with units on that variables, you cannot go unitless.
 
@@ -15,6 +15,7 @@ Example usage:
 
 //converting is easy
 .math("a to inch") // 1.9685039370078743 inch
+.math("source cm to inch")
 
 //keeps automatically track of composite units
 .math("5kg * 2m^2") //10 kg m^2
@@ -108,11 +109,3 @@ An optional `options` object can also be supplied as the last argument to `creat
 ```
 
 Base units created without specifying a definition cannot be overridden.
-
-### Return Value
-
-`createUnit` returns the created unit, or, when multiple units are created, the last unit created. Since `createUnit` is also compatible with the expression parser, this allows you to do things like this:
-
-```js
-("45 mile/hour to createUnit("knot", "0.514444m/s")") // 39.103964668651976 knot
-```
