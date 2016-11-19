@@ -124,8 +124,8 @@ gulp.task('package', ['build'], function(done) {
     require('fs').writeFileSync(buildTarget + '/' + 'package.json', JSON.stringify(editable, null, '  '));
 
     var archiveName = editable.name + '-' + pkg.version + '_for_kibana-' + editable.version + '.zip';
-
-    gulp.src(path.join(packageRoot, '**', '*'))
+    
+    return gulp.src(path.join(buildDir, '**', '*'))
       .pipe(zip(archiveName))
       .pipe(gulp.dest(targetDir))
       .on('end', function() {
