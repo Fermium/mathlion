@@ -125,7 +125,7 @@ gulp.task('package', ['build'], function(done) {
     editable.version = versions.shift();
     require('fs').writeFileSync(buildTarget + '/' + 'package.json', JSON.stringify(editable, null, '  '));
 
-    var archiveName = editable.name + '-' + editable.version + '.zip';
+    var archiveName = editable.name + '-' + pkg.version + '_for_kibana-' + editable.version + '.zip';
 
     gulp.src(path.join(packageRoot, '**', '*'))
       .pipe(zip(archiveName))
@@ -136,9 +136,7 @@ gulp.task('package', ['build'], function(done) {
       });
   }
 
-  // Write one archive for every supported kibana version, plus one with the actual timelion version
-
-  writePackages(pkg.kibanas.concat([pkg.version]), done);
+  writePackages(pkg.kibanas, done);
 });
 
 
