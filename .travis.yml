@@ -12,10 +12,11 @@ sudo: required
 dist: trusty
   
 env:
-- CXX="g++-4.8" KIBANA_VERSION="4.6.1" ELASTICSEARCH_VERSION="2.4.1"
+-  KIBANA_VERSION="4.6.3" ELASTICSEARCH_VERSION="2.4.1"
 
 
 before_script:
+- CXX="g++-4.8"
 - npm install -g gulp
 - wget -O kibana.tar.gz https://github.com/elastic/kibana/archive/v${KIBANA_VERSION}.tar.gz
 - mkdir -p kibana && tar -zxf kibana.tar.gz -C kibana --strip-components=1
