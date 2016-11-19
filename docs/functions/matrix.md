@@ -49,7 +49,6 @@ m.get([1, 0])                    // number 3
 [bignumber](bignumber.md),
 [boolean](boolean.md),
 [complex](complex.md),
-[index](index.md),
 [number](number.md),
 [string](string.md),
 [unit](unit.md),

@@ -41,7 +41,6 @@ a.to('m');                     // returns Unit 0.05 m
 [bignumber](bignumber.md),
 [boolean](boolean.md),
 [complex](complex.md),
-[index](index.md),
 [matrix](matrix.md),
 [number](number.md),
 [string](string.md),

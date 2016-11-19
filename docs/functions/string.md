@@ -43,7 +43,6 @@ string([true, false]);     // returns ['true', 'false']
 [bignumber](bignumber.md),
 [boolean](boolean.md),
 [complex](complex.md),
-[index](index.md),
 [matrix](matrix.md),
 [number](number.md),
 [unit](unit.md)

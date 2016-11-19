@@ -43,7 +43,6 @@ number(unit('52cm'), 'm');    // returns 0.52
 [bignumber](bignumber.md),
 [boolean](boolean.md),
 [complex](complex.md),
-[index](index.md),
 [matrix](matrix.md),
 [string](string.md),
 [unit](unit.md)

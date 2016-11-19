@@ -47,5 +47,4 @@ var g = subset(f, index(1, 1), 7, 0);         // g = [[5, 6], [0, 7]]
 
 [size](size.md),
 [resize](resize.md),
-[squeeze](squeeze.md),
-[index](index.md)
+[squeeze](squeeze.md)

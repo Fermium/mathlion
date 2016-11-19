@@ -44,7 +44,6 @@ boolean([1, 0, 1, 1]);     // returns [true, false, true, true]
 
 [bignumber](bignumber.md),
 [complex](complex.md),
-[index](index.md),
 [matrix](matrix.md),
 [string](string.md),
 [unit](unit.md)

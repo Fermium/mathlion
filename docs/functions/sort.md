@@ -41,6 +41,4 @@ sort(['Langdon', 'Tom', 'Sara'], sortByLength); // returns ['Tom', 'Sara', 'Lang
 
 ## See also
 
-[filter](filter.md),
-[forEach](forEach.md),
-[map](map.md)
+[filter](filter.md)

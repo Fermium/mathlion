@@ -39,6 +39,4 @@ filter(["23", "foo", "100", "55", "bar"], /[0-9]+/); // returns ["23", "100", "5
 
 ## See also
 
-[forEach](forEach.md),
-[map](map.md),
 [sort](sort.md)

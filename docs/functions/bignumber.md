@@ -41,7 +41,6 @@ bignumber('7.2e500');                  // returns BigNumber 7.2e500
 
 [boolean](boolean.md),
 [complex](complex.md),
-[index](index.md),
 [matrix](matrix.md),
 [string](string.md),
 [unit](unit.md)
