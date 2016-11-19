@@ -12,7 +12,7 @@ sudo: required
 dist: trusty
   
 env:
-- CXX="g++-4.8" KIBANA_VERSION="5.0.0-beta1" ELASTICSEARCH_VERSION="5.0.0-beta1"
+- CXX="g++-4.8" KIBANA_VERSION="4.6.1" ELASTICSEARCH_VERSION="2.4.1"
 
 
 before_script:
