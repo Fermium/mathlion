@@ -4,8 +4,10 @@ set -e
 printf "\n\ninstalling timelion\n"
 ./kibana/bin/kibana plugin --install elastic/timelion
 
+TRANSFER_URL=$(./transfer upload target/mathlion-*.zip)
+
 printf "\n\ninstalling the plugin\n"
-./kibana/bin/kibana plugin --install mathlion -u $(./transfer upload target/mathlion-*.zip)
+./kibana/bin/kibana plugin --install mathlion -u $TRANSFER_URL
 
 printf "\n\nstarting kibana in the background\n"
 nohup bash -c "./kibana/bin/kibana>&1 &"
@@ -25,4 +27,6 @@ if grep -q "Skipping non-plugin directory" nohup.out; then
     printf "\nerror!\n" && exit 1 
 fi
 
-printf "No errors found"
+printf "No errors found\n"
+printf "Download tested zip file at:\n"
+printf "$TRANSFER_URL"
