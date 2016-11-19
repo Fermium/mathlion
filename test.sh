@@ -2,7 +2,7 @@
 set -e
 
 printf "\n\ninstalling the plugin\n"
-./kibana/bin/kibana-plugin install $(./transfer upload target/mathlion-${KIBANA_VERSION}.zip)
+./kibana/bin/kibana-plugin install $(./transfer upload target/mathlion-*-${ELASTIC_VERSION}.zip)
 
 printf "\n\nstarting kibana in the background\n"
 nohup bash -c "./kibana/bin/kibana --no-ssl >&1 &"
