@@ -35,8 +35,3 @@ Number &#124; BigNumber | S(n,k)
 ```js
 stirlingS2(5, 3); //returns 25
 ```
-
-
-## See also
-
-[Bell numbers](Bell numbers.md)

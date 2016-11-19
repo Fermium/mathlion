@@ -54,7 +54,6 @@ var d = add(a, b);          // Complex 5 + 2i
 
 [bignumber](bignumber.md),
 [boolean](boolean.md),
-[index](index.md),
 [matrix](matrix.md),
 [number](number.md),
 [string](string.md),

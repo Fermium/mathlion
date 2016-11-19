@@ -10,7 +10,6 @@ Function | Description
 [complex(re,&nbsp;im)](functions/complex.md) | Create a complex value or convert a value to a complex value.
 [createUnit(units)](functions/createUnit.md) | Create a user-defined unit and register it with the Unit type.
 [fraction(numerator,&nbsp;denominator)](functions/fraction.md) | Create a fraction convert a value to a fraction.
-[index(range1,&nbsp;range2,&nbsp;...)](functions/index.md) | Create an index.
 [matrix(x)](functions/matrix.md) | Create a Matrix.
 [number(value)](functions/number.md) | Create a number or convert a string, boolean, or unit to a number.
 [sparse(x)](functions/sparse.md) | Create a Sparse Matrix.
@@ -121,9 +120,7 @@ Function | Description
 [eye(n)](functions/eye.md) | Create a 2-dimensional identity matrix with size m x n or n x n.
 [filter(x,&nbsp;test)](functions/filter.md) | Filter the items in an array or one dimensional matrix.
 [flatten(x)](functions/flatten.md) | Flatten a multi dimensional matrix into a single dimensional matrix.
-[forEach(x,&nbsp;callback)](functions/forEach.md) | Iterate over all elements of a matrix/array, and executes the given callback function.
 [inv(x)](functions/inv.md) | Calculate the inverse of a square matrix.
-[map(x,&nbsp;callback)](functions/map.md) | Create a new matrix or array with the results of the callback function executed on each entry of the matrix/array.
 [ones(m,&nbsp;n,&nbsp;p,&nbsp;...)](functions/ones.md) | Create a matrix filled with ones.
 [partitionSelect(x,&nbsp;k)](functions/partitionSelect.md) | Partition-based selection of an array or 1D matrix.
 [range(start,&nbsp;end&nbsp;[,&nbsp;step])](functions/range.md) | Create an array from a range.
@@ -177,13 +174,6 @@ Function | Description
 [std(a,&nbsp;b,&nbsp;c,&nbsp;...)](functions/std.md) | Compute the standard deviation of a matrix or a  list with values.
 [sum(a,&nbsp;b,&nbsp;c,&nbsp;...)](functions/sum.md) | Compute the sum of a matrix or a list with values.
 [var(a,&nbsp;b,&nbsp;c,&nbsp;...)](functions/var.md) | Compute the variance of a matrix or a  list with values.
-
-## String functions
-
-Function | Description
----- | -----------
-[format(value&nbsp;[,&nbsp;precision])](functions/format.md) | Format a value of any type into a string.
-[print(template, values [, precision])](functions/print.md) | Interpolate values into a string template.
 
 ## Trigonometry functions
 

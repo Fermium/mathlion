@@ -195,8 +195,7 @@ A number can be converted to a string and vice versa using the functions
 ```
 
 Mathlion uses regular JavaScript numbers, which are floating points with a
-limited precision and limited range. The limitations are described in detail
-on the page [Numbers](../datatypes/numbers.md).
+limited precision and limited range.
 
 ```js
 ('1e-325');  // 0
@@ -285,39 +284,6 @@ var parser = math.parser();
 ('b = a - 3i');  // Complex, 2 + 0i
 ('number(b)');   // Number,  2
 ('number(a)');   // Error: 2 + i is no valid number
-```
-
-
-### Units
-
-Mathlion supports units. Units can be used in the arithmetic operations
-add, subtract, multiply, divide, and exponentiation.
-Units can also be converted from one to another.
-An overview of all available units can be found on the page
-[Units](../datatypes/units.md).
-
-Units can be converted using the operator `to` or `in`.
-
-```js
-// create a unit
-('5.4 kg');                    // Unit, 5.4 kg
-
-// convert a unit
-('2 inch to cm');              // Unit, 5.08 cm
-('20 celsius in fahrenheit');  // Unit, ~68 fahrenheit
-('90 km/h to m/s');			// Unit, 25 m / s
-
-// convert a unit to a number
-// A second parameter with the unit for the exported number must be provided
-('number(5 cm, mm)');          // Number, 50
-
-// calculations with units
-('0.5kg + 33g');               // Unit, 0.533 kg
-('3 inch + 2 cm');             // Unit, 3.7874 inch
-('3 inch + 2 cm');             // Unit, 3.7874 inch
-('12 seconds * 2');            // Unit, 24 seconds
-('sin(45 deg)');               // Number, 0.7071067811865475
-('9.81 m/s^2 * 5 s to mi/h')   // Unit, 109.72172512527 mi / h
 ```
 
 
