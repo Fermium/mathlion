@@ -44,6 +44,5 @@ deploy:
   on:
     repo: fermiumlabs/mathlion
     tags: true
-    node: 4      
 notifications:
   email: false
