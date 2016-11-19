@@ -14,7 +14,7 @@ dist: trusty
 env:
 - ELASTIC_VERSION="5.0.0-beta1" 
 - ELASTIC_VERSION="5.0.0"
-- ELASTIC_VERSION="5.0.1"
+- ELASTIC_VERSION="5.0.1" DEPLOY="true"
 
 
 before_script:
@@ -44,5 +44,6 @@ deploy:
   on:
     repo: fermiumlabs/mathlion
     tags: true
+    condition: "$DEPLOY = true"
 notifications:
   email: false
