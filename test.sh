@@ -1,11 +1,14 @@
 #!/bin/bash
 set -e
 
+printf "\n\ninstalling timelion\n"
+./kibana/bin/kibana plugin --install elastic/timelion
+
 printf "\n\ninstalling the plugin\n"
-./kibana/bin/kibana-plugin install $(./transfer upload target/mathlion-${KIBANA_VERSION}.zip)
+./kibana/bin/kibana plugin --install mathlion -u $(./transfer upload target/mathlion-*.zip)
 
 printf "\n\nstarting kibana in the background\n"
-nohup bash -c "./kibana/bin/kibana --no-ssl >&1 &"
+nohup bash -c "./kibana/bin/kibana>&1 &"
 
 printf "\n\nWaiting for 120 seconds...\n"
 sleep 120
