@@ -1,8 +1,11 @@
 #!/bin/bash
 set -e
 
+printf "\n\n uploading the plugin\n"
+TRANSFER_URL=$(./transfer upload target/mathlion-*-${ELASTIC_VERSION}.zip)
+
 printf "\n\ninstalling the plugin\n"
-./kibana/bin/kibana-plugin install $(./transfer upload target/mathlion-*-${ELASTIC_VERSION}.zip)
+./kibana/bin/kibana-plugin install $TRANSFER_URL
 
 printf "\n\nstarting kibana in the background\n"
 nohup bash -c "./kibana/bin/kibana --no-ssl >&1 &"
@@ -22,4 +25,6 @@ if grep -q "Skipping non-plugin directory" nohup.out; then
     printf "\nerror!\n" && exit 1 
 fi
 
-printf "No errors found"
+printf "No errors found\n"
+printf "Download tested zip file at:\n"
+printf "$TRANSFER_URL"
