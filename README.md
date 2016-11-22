@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/fermiumlabs/mathlion.svg?branch=master)](https://travis-ci.org/fermiumlabs/mathlion) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/fermiumlabs/Lobby)
- [![Code Climate](https://codeclimate.com/github/fermiumlabs/mathlion/badges/gpa.svg)](https://codeclimate.com/github/fermiumlabs/mathlion)
+ [![Code Climate](https://codeclimate.com/github/fermiumlabs/mathlion/badges/gpa.svg)](https://codeclimate.com/github/fermiumlabs/mathlion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e3dffaf9691048cc926cc80721b8750e)](https://www.codacy.com/app/d_2/mathlion?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fermiumlabs/mathlion&amp;utm_campaign=Badge_Grade)
 
 # Mathlion
 
@@ -8,17 +8,17 @@ Check out what it can do in the [documentation](http://mathlion.docs.fermiumlabs
 
 ### Installation
 
-Copy the last installation url for your version of Kibana from [the repository releases](https://github.com/fermiumlabs/mathlion/releases/latest). The file follows the naming `mathlion-major.minor.patch.zip` where the version indicated it's the one in Kibana.
+Copy the last installation url for your version of Kibana from [the repository releases](https://github.com/fermiumlabs/mathlion/releases/latest). The file follows the naming `mathlion-major.minor.patch_for_kibana-major.minor.patch.zip` where the first version is the one of mathlion, the second version indicated it's the one in Kibana.
 
 Remember that starting from Kibana 5.0 you always need an update version of every plugin for it to start as indicated [here](https://siren.solutions/in-kibana-5-all-your-plugins-will-break-at-each-and-every-update/).
 
 ```sh
 #Kibana >= 5.x
 
-./bin/kibana-plugin install  https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-major.minor.patch.zip
+./bin/kibana-plugin install  https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-major.minor.patch_for_kibana-major.minor.patch.zip
 
-#Kibana <= 4.x
-./bin/kibana --install mathlion -u https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-major.minor.patch.zip
+#Kibana 4
+./bin/kibana --install mathlion -u https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-0.2.0_for_kibana-4.X.zip
 ```
 
 ### Examples
