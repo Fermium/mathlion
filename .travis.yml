@@ -50,4 +50,3 @@ deploy:
 notifications:
   email: false
   slack: fermiumlabs:0BfrFyD9uqr9bFhsH0Etn4wo
-    on_success: always
