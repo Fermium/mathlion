@@ -10,8 +10,20 @@ printf "\n\ninstalling the plugin\n"
 printf "\n\nstarting kibana in the background\n"
 nohup bash -c "./kibana/bin/kibana --no-ssl >&1 &"
 
-printf "\n\nWaiting for 120 seconds...\n"
-sleep 120
+printf "\n\nWaiting one minute...\n"
+sleep 60
+
+printf "\n\nWaiting another minute...\n"
+sleep 60
+
+printf "\n\nWaiting another minute...\n"
+sleep 60
+
+printf "\n\nWaiting another minute...\n"
+sleep 60
+
+printf "\n\nWaiting another minute...\n"
+sleep 60
 
 printf "\n\nKibana log:\n"
 cat nohup.out

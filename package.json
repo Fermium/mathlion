@@ -21,26 +21,26 @@
     "test": "gulp test"
   },
   "devDependencies": {
-    "@elastic/eslint-config-kibana": "^0.1.0",
-    "babel-eslint": "^4.1.8",
+    "@elastic/eslint-config-kibana": "^0.2.1",
+    "babel-eslint": "^7.1.1",
     "bluebird": "^3.1.1",
-    "eslint": "^1.10.3",
-    "eslint-plugin-mocha": "^1.1.0",
+    "eslint": "^3.11.1",
+    "eslint-plugin-mocha": "^4.7.0",
     "glob": "^7.0.5",
     "gulp": "^3.9.0",
-    "gulp-eslint": "^1.1.1",
+    "gulp-eslint": "^3.0.1",
     "gulp-gzip": "^1.2.0",
     "gulp-tar": "^1.8.0",
     "gulp-util": "^3.0.7",
     "gulp-zip": "^3.2.0",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.5.0",
-    "rsync": "^0.4.0"
+    "rsync": "^0.5.0"
   },
   "dependencies": {
     "babel-register": "^6.3.13",
     "jsonfile": "^2.3.1",
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.2",
     "mathjs": "^3.5.2"
   }
 }
