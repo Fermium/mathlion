@@ -54,7 +54,7 @@ Remember that starting from Kibana 5.0 you always need an update version of ever
 
 This plugin is supported by:
 
-* Kibana 5 beta 1
+* Kibana 5
 * Kibana 4.x (check out branch [backport-4](https://github.com/fermiumlabs/mathlion/tree/backport-4))
 
 We regularly test only for Kibana 5. If you find bugs on Kibana 4 you can open a issue, but we would prefer a pull request.
