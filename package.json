@@ -1,6 +1,6 @@
 {
   "name": "mathlion",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "kibanas": [
     "5.0.0-beta1",
     "5.0.0",
