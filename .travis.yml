@@ -15,7 +15,9 @@ env:
 - ELASTIC_VERSION="5.0.0-beta1" 
 - ELASTIC_VERSION="5.0.0"
 - ELASTIC_VERSION="5.0.1"
-- ELASTIC_VERSION="5.0.2" DEPLOY="true"
+- ELASTIC_VERSION="5.0.2"
+- ELASTIC_VERSION="5.1.1" DEPLOY="true"
+
 
 before_script:
 - CXX="g++-4.8"
