@@ -6,11 +6,10 @@ Remember that starting from Kibana 5.0 you always need an update version of ever
 
 ```sh
 #Kibana >= 5.x
+./bin/kibana-plugin install  https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-major.minor.patch_for_kibana-major.minor.patch.zip
 
-./bin/kibana-plugin install  https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-major.minor.patch.zip
-
-#Kibana <= 4.x
-./bin/kibana --install mathlion -u https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-major.minor.patch.zip
+#Kibana 4
+./bin/kibana --install mathlion -u https://github.com/fermiumlabs/mathlion/releases/download/version_name/mathlion-major.minor.patch_for_kibana-4.X.zip
 ```
 
-You have to download the 4.x version for Kibana <=4.x and the specific version to match your Kibana version if you have Kibana >=5.x
+You have to download the 4.x version for Kibana 4 and the specific version to match your Kibana version if you have Kibana >=5.x
