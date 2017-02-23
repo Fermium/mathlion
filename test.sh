@@ -10,19 +10,13 @@ printf "\n\ninstalling the plugin\n"
 printf "\n\nstarting kibana in the background\n"
 nohup bash -c "./kibana/bin/kibana --no-ssl >&1 &"
 
-printf "\n\nWaiting one minute...\n"
+printf "\n\nWaiting one minute..."
 sleep 60
 
-printf "\n\nWaiting another minute...\n"
+printf "\nWaiting another minute..."
 sleep 60
 
-printf "\n\nWaiting another minute...\n"
-sleep 60
-
-printf "\n\nWaiting another minute...\n"
-sleep 60
-
-printf "\n\nWaiting another minute...\n"
+printf "\nWaiting another minute..."
 sleep 60
 
 printf "\n\nKibana log:\n"
@@ -39,4 +33,5 @@ fi
 
 printf "No errors found\n"
 printf "Download tested zip file at:\n"
+printf "\nYOU MAY DOWNLOAD THE TESTED .ZIP AT:\n"
 printf "$TRANSFER_URL"

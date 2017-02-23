@@ -164,6 +164,7 @@ pages:
   - functions/xgcd.md
   - functions/xor.md
   - functions/zeros.md  
+- Release: release.md
   
 copyright: Copyright &copy; 2016 <a href="https://fermiumlabs.com">Fermium LABS srl</a>.
   

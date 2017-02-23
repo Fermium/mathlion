@@ -27,7 +27,7 @@ Examples:
 .es(*).math("a=source")  //this query is invisible and does not generate an axis
 .es(*).math("a=source; a")  //this query does
 
-.nop.math("sqrt(3^2 + 4^2)") //returns 5
+.nop().math("sqrt(3^2 + 4^2)") //returns 5
 
 //Calculate power comsumption based on measured current and stimated voltage (in Europe)
 .nop().math("electricPower(v,i)=(v*i)")
