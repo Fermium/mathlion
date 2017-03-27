@@ -2,6 +2,8 @@
 
 # Mathlion
 
+[![Join the chat at https://gitter.im/fermiumlabs/mathlion](https://badges.gitter.im/fermiumlabs/mathlion.svg)](https://gitter.im/fermiumlabs/mathlion?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Mathlion is a Kibana extension that enables equation parsing and advanced math under Timelion.
 Check out what it can do in the [documentation](http://mathlion.docs.fermiumlabs.com/)
 
