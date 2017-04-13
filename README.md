@@ -1,6 +1,7 @@
 <a href="https://fermiumlabs.com/">
     <img src="https://fermiumlabs.com/Assets/img/logos/Horizontal-Main_500px.png" alt="Fermium LABS logo" width="200" align="right" />
 </a>
+
 [![Build Status](https://travis-ci.org/fermiumlabs/mathlion.svg?branch=master)](https://travis-ci.org/fermiumlabs/mathlion) [![Code Climate](https://codeclimate.com/github/fermiumlabs/mathlion/badges/gpa.svg)](https://codeclimate.com/github/fermiumlabs/mathlion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e3dffaf9691048cc926cc80721b8750e)](https://www.codacy.com/app/d_2/mathlion?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fermiumlabs/mathlion&amp;utm_campaign=Badge_Grade) [![Analytics](https://ga-beacon.appspot.com/UA-69533556-3/mathlion/readme/?flat)](https://github.com/igrigorik/ga-beacon)
 
 
