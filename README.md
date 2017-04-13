@@ -74,3 +74,13 @@ We regularly test only for Kibana 5. If you find bugs on Kibana 4 you can open a
 * Units of measurement
 
 For upcoming features and TODOs check [here](https://github.com/fermiumlabs/mathlion/projects).
+
+https://travis-ci.org/fermiumlabs/website.svg?branch=master
+
+
+---
+
+<a href="https://twitter.com/intent/user?screen_name=fermiumlabs">
+    <img src="https://img.shields.io/twitter/follow/fermiumlabs.svg?style=social&label=Follow" alt="Follow Fermium LABS on Twitter" align="right" />
+</a>
+
