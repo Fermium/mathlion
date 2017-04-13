@@ -4,10 +4,10 @@
 
 # Mathlion
 
-![logo](logo.png)
-
-
 [![Build Status](https://travis-ci.org/fermiumlabs/mathlion.svg?branch=master)](https://travis-ci.org/fermiumlabs/mathlion) [![Code Climate](https://codeclimate.com/github/fermiumlabs/mathlion/badges/gpa.svg)](https://codeclimate.com/github/fermiumlabs/mathlion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e3dffaf9691048cc926cc80721b8750e)](https://www.codacy.com/app/d_2/mathlion?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fermiumlabs/mathlion&amp;utm_campaign=Badge_Grade) [![Analytics](https://ga-beacon.appspot.com/UA-69533556-3/mathlion/readme/?flat)](https://github.com/igrigorik/ga-beacon) [![Join the chat at https://gitter.im/fermiumlabs/mathlion](https://badges.gitter.im/fermiumlabs/mathlion.svg)](https://gitter.im/fermiumlabs/mathlion?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+
+![logo](logo.png)
 
 Mathlion is a Kibana extension that enables equation parsing and advanced math under Timelion.
 Check out what it can do in the [documentation](http://mathlion.docs.fermiumlabs.com/)
