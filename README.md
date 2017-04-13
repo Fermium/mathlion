@@ -75,9 +75,6 @@ We regularly test only for Kibana 5. If you find bugs on Kibana 4 you can open a
 
 For upcoming features and TODOs check [here](https://github.com/fermiumlabs/mathlion/projects).
 
-https://travis-ci.org/fermiumlabs/website.svg?branch=master
-
-
 ---
 
 <a href="https://twitter.com/intent/user?screen_name=fermiumlabs">
