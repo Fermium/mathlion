@@ -28,7 +28,7 @@ module.exports.exists = function (envName) {
 var interval = setInterval (function (enviroment) {
   var now = Date.now() / 1000;
   for (var key in enviroment) {
-    if (typeof enviroment[key] !== 'function' && now - enviroment[key].last_request > 10) {
+    if (typeof enviroment[key] !== 'function' && now - enviroment[key].last_request > 120) {
       delete enviroment[key];
     }
   }
