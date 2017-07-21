@@ -81,6 +81,7 @@ If you need to update mathlion for a new Kibana release:
 1. Add your version to package.json, inside "kibanas".
 2. Inside travis.yml add an "ELASTIC_VERSION" environmental variable with the latest version of kibana.
 3. commit your changes
+4. run `npm version patch`
 
 ---
 
