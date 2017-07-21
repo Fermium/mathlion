@@ -74,9 +74,16 @@ We regularly test only for Kibana 5. If you find bugs on Kibana 4 you can open a
 
 For upcoming features and TODOs check [here](https://github.com/fermiumlabs/mathlion/projects).
 
+## How to update
+
+If you need to update mathlion for a new Kibana release:
+
+1. Add your version to package.json, inside "kibanas".
+2. Inside travis.yml add an "ELASTIC_VERSION" environmental variable with the latest version of kibana.
+3. commit your changes
+
 ---
 
 <a href="https://twitter.com/intent/user?screen_name=fermiumlabs">
     <img src="https://img.shields.io/twitter/follow/fermiumlabs.svg?style=social&label=Follow" alt="Follow Fermium LABS on Twitter" align="right" />
 </a>
-
