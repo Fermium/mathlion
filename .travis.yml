@@ -10,11 +10,11 @@ addons:
       - g++-4.8
 sudo: required
 dist: trusty
-  
+
 env:
-- ELASTIC_VERSION="5.2.2"
-- ELASTIC_VERSION="5.4.3"
-- ELASTIC_VERSION="5.5.0" DEPLOY="true"
+- ELASTIC_VERSION="5.6.0"
+- ELASTIC_VERSION="5.6.4" DEPLOY="true"
+
 
 
 before_script:
@@ -25,7 +25,8 @@ before_script:
 - sh -c 'cd kibana && npm install'
 - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTIC_VERSION}.deb && sudo dpkg -i --force-confnew elasticsearch-${ELASTIC_VERSION}.deb && sudo service elasticsearch restart
 - curl -O https://raw.githubusercontent.com/rockymadden/transfer-cli/master/src/transfer && chmod +x transfer
-- pip install mkdocs
+- pip install requests[security]
+- pip install --user mkdocs
 
 script:
 - mkdocs build
