@@ -83,13 +83,15 @@ If you need to update mathlion for a new Kibana release:
 3. commit your changes
 4. run `npm version patch`
 
-## How to update (for users)
+## How to request an update (for users)
 
 If you need to update mathlion for a new Kibana release:
 
 1. Add your version to package.json, inside "kibanas". Be sure to write correct Json. You can validate it [Here](https://jsonlint.com/)
 2. Inside travis.yml add your version [Here](https://github.com/fermiumlabs/mathlion/blob/master/.travis.yml#L16)
 3. open a Pull request against Master
+
+If you need it urgently, write to support@fermiumlabs.com
 
 ---
 
