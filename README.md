@@ -1,5 +1,5 @@
 <a href="https://fermiumlabs.com/">
-    <img src="https://fermiumlabs.com/Assets/img/logos/Horizontal-Main_500px.png" alt="Fermium LABS logo" width="200" align="right" />
+    <img src="https://fermiumlabs.com/wp-content/uploads/2019/02/Horizontal-Main_500px.png" alt="Fermium LABS logo" width="200" align="right" />
 </a>
 
 # Mathlion
