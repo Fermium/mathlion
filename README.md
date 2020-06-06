@@ -11,7 +11,7 @@
 Mathlion is a Kibana extension that enables equation parsing and advanced math under Timelion.
 Check out what it can do in the [documentation](http://mathlion.docs.fermiumlabs.com/)
 
-### Installation
+### Installation 
 
 Copy the last installation url for your version of Kibana from [the repository releases](https://github.com/fermiumlabs/mathlion/releases/latest). The file follows the naming `mathlion-major.minor.patch_for_kibana-major.minor.patch.zip` where the first version is the one of mathlion, the second version indicated it's the one in Kibana.
 
